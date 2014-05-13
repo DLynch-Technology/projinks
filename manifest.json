@@ -1,0 +1,14 @@
+{
+  "name": "Projinks",
+  "description": "Storage of links for Projects",
+  "version": "0.1",
+  "app": {
+    "background": {
+      "scripts": ["background.js"]
+    }
+  },
+  "permissions": [
+
+  ],
+  "icons": { "16": "calculator-16.png", "128": "calculator-128.png" }
+}
