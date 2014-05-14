@@ -1,14 +1,15 @@
 {
-  "name": "Projinks",
-  "description": "Storage of links for Projects",
-  "version": "0.1",
-  "app": {
-    "background": {
-      "scripts": ["background.js"]
-    }
-  },
-  "permissions": [
+  "manifest_version": 2,
 
+  "name": "projinks",
+  "description": "Links for my project == projinks",
+  "version": "1.0",
+  "permissions":[
+  	"tabs"
   ],
-  "icons": { "16": "calculator-16.png", "128": "calculator-128.png" }
+
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  }
 }
