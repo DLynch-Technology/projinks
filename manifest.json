@@ -5,7 +5,8 @@
   "description": "Links for my project == projinks",
   "version": "1.0",
   "permissions":[
-  	"tabs"
+  	"tabs",
+    "storage"
   ],
   "content_scripts": [
     {
