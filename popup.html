@@ -3,17 +3,27 @@
 		<title>One One One</title>
 		<style>
 			body{
-				width: 300px;
+				width: 800px;
 				height: 300px;
 			}
 
 			.max-width{
-				width: 100%;
+				width: 80%;
 			}
 		</style>
-    	<script src="popup.js"></script>
+    	<script type="text/javascript" src="popup.js"></script>
+    	<script type="text/javascript" src="jquery.js"></script>
+    	<script type="text/javascript" src="myscripts.js"></script>
+
+
 	</head>
 	<body>
-		<input type="input" name="live_url" id="live-url" class="max-width" />
+		<label>
+			Live URL
+			<input type="input" name="live_url" id="live-url" class="max-width" />
+		</label>
+
+		<button>Add Url</button>
+		<button id="button-go-to-url">Go to URL</button>
 	</body>
 </html>
