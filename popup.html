@@ -10,6 +10,9 @@
 			.max-width{
 				width: 80%;
 			}
+			.views{
+				display: none;
+			}
 		</style>
     	<script type="text/javascript" src="popup.js"></script>
     	<script type="text/javascript" src="jquery.js"></script>
@@ -18,13 +21,36 @@
 
 	</head>
 	<body>
-		<h1>Projinks == Project + Links</h1>
-		<label>
-			Live URL
-			<input type="input" name="live_url" id="live-url" class="max-width" />
-		</label>
+		<section>
+			<h1>Projinks == Project + Links</h1>
+			<label>
+				Live URL
+				<input type="input" name="live_url" id="live-url" class="max-width" />
+			</label>
 
-		<button id="add-url-to-list">Add Url</button>
-		<button id="button-go-to-url">Go to URL</button>
+			<button id="add-url-to-list">Add Url</button>
+			<button id="button-go-to-url">Go to URL</button>
+		</section>
+
+		<section style="padding: 10px 0px; border-top: 1px solid #d7d7d7; border-bottom: 1px solid #d7d7d7;">
+			<nav>
+				<a href="#" id="lk-cp">Create Project</a>
+				<a href="#" id="lk-pl">Project List</a>
+			</nav>
+		</section>
+		<section id="layout">
+			<div id="view-create-project" class="views">
+				<label>Project Name
+					<input type="text" name="pname" id="pname" placeholder="what is your project name" />
+				</label>
+
+				<button id="btn-view-create-project">+Create</button>
+			</div>
+		</section>
+
+		
+
 	</body>
 </html>
+
+

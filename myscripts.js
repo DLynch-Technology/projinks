@@ -8,15 +8,22 @@ $(document).ready(function(){
 		//if url doesn't have prefix http:// add it before submit
 	});
 	$('#add-url-to-list').click(function(){
-		alert(455);
 		chrome.storage.sync.set({ 'last_url' : $('#live-url').val() });
 
 		chrome.storage.sync.get('last_url', function(val){
 			console.log(val.last_url);
 		});
 
-		
+	});
 
+	$('#lk-cp').click(function(){
+		$('.views').css('display','none');
+		$('#view-create-project').show();
+
+	});
+
+	$('#btn-view-create-project').click(function(){
+		create_project();
 	});
 });
 
@@ -24,4 +31,8 @@ var make_current_url_live = function(){
 	chrome.tabs.query({ active: true, lastFocusedWindow: true }, function(tabs) {
     	document.getElementById('live-url').value = tabs[0].url;
 	});
+}
+
+var create_project = function(){
+	alert(434);
 }
