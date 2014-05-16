@@ -44,10 +44,14 @@ var create_project = function(){
 
 	var psaved_list;
 	chrome.storage.sync.get('mainlist', function(saved_list){
-
+		console.log(saved_list);
+		
 		if(jQuery.isEmptyObject(saved_list)) {
+
+			saved_list.mainlist = {};
 			saved_list.mainlist.plist = [];
 		}
+
 		if ( saved_list.mainlist.plist == undefined ){
 			saved_list.mainlist.plist = [];
 		}
