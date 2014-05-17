@@ -6,6 +6,7 @@ App.version = "0.1";
 var PJK = function(){
 	this.version = App.version;
 	this.collections = [];
+	this.error_message = "";
 
 
 	this.init = function(){
@@ -26,7 +27,24 @@ var PJK = function(){
 	}
 
 	this.pushToCollection = function(value){
+		var ck = 0;
+		var error_code = '';
+		if ( value.length < 1 ){
+			ck++; error_code = "STRING_EMPTY_ERROR"
+		}
+		if ( value.length > 25 ){
+			ck++; error_code = "STRING_LENGTH_ERROR"
+		}
+		if ( !value.match(/^[a-z0-9\s]+$/i) ){
+			ck++; error_code = "STRING_ALLOWED_CHARACTER_ERROR";
+		}
+		if ( ck > 0 ){
+			this.error_message = error_code;
+			return false;
+		}
+
 		this.collections.push(value);
+		return true;
 	}
 
 	this.saveStorage = function(){
@@ -45,6 +63,11 @@ var PJK = function(){
 		if ( this.collections == undefined ) return 0;
 		return this.collections.length;
 	}
+	this.nextGenericName = function(){
+		if (this.collection_count() < 1) return "Projink 1";
+		// for loop / try match project 1 // or loop and no match go with that number
+		return "";
+	}
 
 	this.init();
 }
@@ -54,9 +77,6 @@ var pjk;
 $(document).ready(function(){
 
 	pjk = new PJK();
-
-	
-
 
 	make_current_url_live();
 	$('#button-go-to-url').click(function(){
@@ -75,6 +95,7 @@ $(document).ready(function(){
 
 	$('#lk-cp').click(function(){
 		$('.views').css('display','none');
+		$('#pname').val(pjk.nextGenericName());
 		$('#view-create-project').show();
 	});
 	$('#lk-pl').click(function(){
@@ -103,14 +124,15 @@ var make_current_url_live = function(){
 }
 
 var create_project = function(pjk){
-	//do validation here
-	var pname = $('#pname').val();
-	if ( pname.length < 1) return;
 
-	pjk.pushToCollection(pname);
-	pjk.saveStorage();
+	var try_push = pjk.pushToCollection($('#pname').val());
+	if (try_push){
+		pjk.saveStorage();
+		$('#lk-pl').trigger('click');
+		return;
+	}
 
-	$('#lk-pl').trigger('click');
+	
 }
 
 var show_plist = function(pjk){
@@ -119,7 +141,7 @@ var show_plist = function(pjk){
 		var lt = pjk.collections;
 		$('#prolist ul').html("");
 		for ( var i = 0; i < lt.length; i++){
-			$('#prolist ul').append("<li>"+ lt[i] +" <a href='#' rel='"+ i +"' class='remove-project'>remove</a></li>");
+			$('#prolist ul').append("<li>"+ lt[i] +" <a href='#' rel='"+ i +"' class='remove-project'>remove</a> <a href='#'>open</a></li>");
 		}
 	}
 
