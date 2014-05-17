@@ -1,6 +1,63 @@
 
+var App = {};
+App.version = "0.1";
+
+
+var PJK = function(){
+	this.version = App.version;
+	this.collections = [];
+
+
+	this.init = function(){
+		this.retrieveStorage(this);
+	}
+
+	this.retrieveStorage = function(pjk){
+		var colls = [];
+		chrome.storage.sync.get('content_store', function(result){
+			if(jQuery.isEmptyObject(result)) return;
+			pjk.setCollections(result.content_store.collections);
+		});
+		return;
+	}
+
+	this.setCollections = function (coll){
+		this.collections = coll;
+	}
+
+	this.pushToCollection = function(value){
+		this.collections.push(value);
+	}
+
+	this.saveStorage = function(){
+		var content_store = {};
+		content_store.collections = this.collections;
+		chrome.storage.sync.set({'content_store' : content_store});
+	}
+
+	this.removeCollection = function(id_to_remove){
+		console.log(id_to_remove);
+		this.collections.splice(id_to_remove,1);
+		this.saveStorage();
+	}
+
+	this.collection_count = function(){
+		if ( this.collections == undefined ) return 0;
+		return this.collections.length;
+	}
+
+	this.init();
+}
+
+var pjk;
 
 $(document).ready(function(){
+
+	pjk = new PJK();
+
+	
+
+
 	make_current_url_live();
 	$('#button-go-to-url').click(function(){
 		var live_url = $('#live-url').val();
@@ -23,13 +80,20 @@ $(document).ready(function(){
 	$('#lk-pl').click(function(){
 		$('.views').css('display','none');
 		$('#prolist').show();
-		show_plist();
+		show_plist(pjk);
 	});
 
 	$('#btn-view-create-project').click(function(){
-		create_project();
+		create_project(pjk);
 	});
 
+});
+
+$(document).on("click", ".remove-project",function() {
+	var ele = $(this);
+	var id_to_remove = ele.attr('rel');
+	pjk.removeCollection(id_to_remove);
+	ele.parent().remove();
 });
 
 var make_current_url_live = function(){
@@ -38,43 +102,25 @@ var make_current_url_live = function(){
 	});
 }
 
-var create_project = function(){
+var create_project = function(pjk){
+	//do validation here
 	var pname = $('#pname').val();
 	if ( pname.length < 1) return;
 
-	var psaved_list;
-	chrome.storage.sync.get('mainlist', function(saved_list){
-		console.log(saved_list);
-		
-		if(jQuery.isEmptyObject(saved_list)) {
+	pjk.pushToCollection(pname);
+	pjk.saveStorage();
 
-			saved_list.mainlist = {};
-			saved_list.mainlist.plist = [];
-		}
-
-		if ( saved_list.mainlist.plist == undefined ){
-			saved_list.mainlist.plist = [];
-		}
-		saved_list.mainlist.plist.push($('#pname').val());
-
-		
-		save_project(saved_list.mainlist);
-	});
 	$('#lk-pl').trigger('click');
-
 }
 
-var save_project = function(obj){
+var show_plist = function(pjk){
 
-	chrome.storage.sync.set({'mainlist' : obj });
-}
-
-var show_plist = function(){
-	chrome.storage.sync.get('mainlist', function(saved_list){
-		var lt = saved_list.mainlist.plist;
+	if ( pjk.collection_count() ){
+		var lt = pjk.collections;
 		$('#prolist ul').html("");
 		for ( var i = 0; i < lt.length; i++){
-			$('#prolist ul').append("<li>"+ lt[i] +"</li>");
+			$('#prolist ul').append("<li>"+ lt[i] +" <span rel='"+ i +"' class='remove-project'>remove</span></li>");
 		}
-	});
+	}
+
 }
