@@ -119,7 +119,7 @@ var show_plist = function(pjk){
 		var lt = pjk.collections;
 		$('#prolist ul').html("");
 		for ( var i = 0; i < lt.length; i++){
-			$('#prolist ul').append("<li>"+ lt[i] +" <span rel='"+ i +"' class='remove-project'>remove</span></li>");
+			$('#prolist ul').append("<li>"+ lt[i] +" <a href='#' rel='"+ i +"' class='remove-project'>remove</a></li>");
 		}
 	}
 
