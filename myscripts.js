@@ -9,6 +9,7 @@ var PJK = function(){
     this.projinks = [];
     this.error_message = "";
     this.current_tab_url = "";
+    this.active_project_id = "";
 
     this.init = function(){
         this.retrieveStorage(this);
@@ -19,6 +20,7 @@ var PJK = function(){
             if(jQuery.isEmptyObject(result)) return;
             pjk.setCollections(result.content_store.collections);
             pjk.setProjinks(result.content_store.projinks);
+            console.log(pjk);
         });
         return;
     }
@@ -46,7 +48,10 @@ var PJK = function(){
         }
 
         this.collections.push(value);
-        this.projinks.push({});
+        this.projinks.push({
+            links : [],
+            created_date : Math.round(new Date().getTime() / 1000),
+        });
         return true;
     }
     this.saveStorage = function(){
@@ -55,12 +60,18 @@ var PJK = function(){
         content_store.projinks = this.projinks;
         chrome.storage.sync.set({'content_store' : content_store});
     }
+    this.addURL = function(){
+        this.buildCurrentURL();
+        this.projinks[this.active_project_id].links.push(this.current_tab_url);
+        //this.projinks[this.active_project_id].links.push(this.current_tab_url);
+        console.log(this.projinks);
+    }
     this.buildCurrentURL = function(){
-        this.current_tab_url = $('#live-url').text();
+        this.current_tab_url = $('#live-url').val();
     }
     this.removeCollection = function(id_to_remove){
-        console.log(id_to_remove);
         this.collections.splice(id_to_remove,1);
+        this.projinks.splice(id_to_remove, 1);
         this.saveStorage();
     }
     this.collection_count = function(){
@@ -76,15 +87,13 @@ var PJK = function(){
 }
 
 var pjk;
+current_tab_url();
 
 $(document).ready(function(){
-    current_tab_url();
     
     pjk = new PJK();
     //pjk.buildCurrentURL();
     //not sure why i can't get the selector of liveURL right.. Tak
-    var URL = $('#live-url').text();
-    console.log(URL);
 
     $('#lk-cp').click(function(){
         $('.views').css('display','none');
@@ -115,15 +124,17 @@ $(document).on("click", ".open-project", function(){
     $('.views').css('display', 'none');
 
     var vw = $('#projink-view');
-    vw.find('h2').text(pjk.collections[ele.attr('rel')]);
+
+    pjk.active_project_id = ele.attr('rel');
+    vw.find('h2').text(pjk.collections[pjk.active_project_id]);
+
     vw.show();
+
 });
 
-var current_tab_url = function(){
-    chrome.tabs.query({ active: true, lastFocusedWindow: true }, function(tabs) {
-        $('#live-url').html(tabs[0].url);
-    });
-}
+$(document).on("click", ".add-url", function(){
+    pjk.addURL();
+});
 
 var create_project = function(pjk){
 
