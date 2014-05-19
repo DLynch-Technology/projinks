@@ -91,8 +91,6 @@ current_tab_url();
 $(document).ready(function(){
     
     pjk = new PJK();
-    //pjk.buildCurrentURL();
-    //not sure why i can't get the selector of liveURL right.. Tak
 
     $('#lk-cp').click(function(){
         $('.views').css('display','none');
@@ -128,15 +126,17 @@ $(document).on("click", ".open-project", function(){
     pjk.active_project_id = ele.attr('rel');
     vw.find('h2').text(pjk.collections[pjk.active_project_id]);
     buildProjectView(pjk, vw);
-
     vw.show();
-
+});
+$(document).on("dblclick", ".open-url", function(){
+    var ele = $(this);
+    chrome.tabs.create({ url: ele.text() });
 });
 var buildProjectView = function(pjk){
     vw = $('#plist');
     if ( pjk.projinks[pjk.active_project_id].links.length > 0 ){
         for( var i = 0; i < pjk.projinks[pjk.active_project_id].links.length; i++ ){
-            vw.append( "<li>" + pjk.projinks[pjk.active_project_id].links[i] + "</li>" );
+            vw.append( "<li class='open-url'>" + pjk.projinks[pjk.active_project_id].links[i] + "</li>" );
         }
     }
 }
