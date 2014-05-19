@@ -123,6 +123,7 @@ $(document).on("click", ".open-project", function(){
     $('.views').css('display', 'none');
 
     var vw = $('#projink-view');
+    $('#plist').html();
 
     pjk.active_project_id = ele.attr('rel');
     vw.find('h2').text(pjk.collections[pjk.active_project_id]);
@@ -134,7 +135,6 @@ $(document).on("click", ".open-project", function(){
 var buildProjectView = function(pjk){
     vw = $('#plist');
     if ( pjk.projinks[pjk.active_project_id].links.length > 0 ){
-        vw.html('');
         for( var i = 0; i < pjk.projinks[pjk.active_project_id].links.length; i++ ){
             vw.append( "<li>" + pjk.projinks[pjk.active_project_id].links[i] + "</li>" );
         }
