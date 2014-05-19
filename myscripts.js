@@ -63,8 +63,7 @@ var PJK = function(){
     this.addURL = function(){
         this.buildCurrentURL();
         this.projinks[this.active_project_id].links.push(this.current_tab_url);
-        //this.projinks[this.active_project_id].links.push(this.current_tab_url);
-        console.log(this.projinks);
+        this.saveStorage();
     }
     this.buildCurrentURL = function(){
         this.current_tab_url = $('#live-url').val();
@@ -127,13 +126,24 @@ $(document).on("click", ".open-project", function(){
 
     pjk.active_project_id = ele.attr('rel');
     vw.find('h2').text(pjk.collections[pjk.active_project_id]);
+    buildProjectView(pjk, vw);
 
     vw.show();
 
 });
+var buildProjectView = function(pjk){
+    vw = $('#plist');
+    if ( pjk.projinks[pjk.active_project_id].links.length > 0 ){
+        vw.html('');
+        for( var i = 0; i < pjk.projinks[pjk.active_project_id].links.length; i++ ){
+            vw.append( "<li>" + pjk.projinks[pjk.active_project_id].links[i] + "</li>" );
+        }
+    }
+}
 
 $(document).on("click", ".add-url", function(){
     pjk.addURL();
+    buildProjectView(pjk)
 });
 
 var create_project = function(pjk){
