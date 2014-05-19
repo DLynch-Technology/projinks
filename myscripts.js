@@ -73,6 +73,11 @@ var PJK = function(){
         this.projinks.splice(id_to_remove, 1);
         this.saveStorage();
     }
+    this.removeLinkFromActive = function(index){
+        this.projinks[this.active_project_id].links.splice(index,1);
+        this.saveStorage();
+
+    }
     this.collection_count = function(){
         if ( this.collections == undefined ) return 0;
         return this.collections.length;
@@ -121,22 +126,48 @@ $(document).on("click", ".open-project", function(){
     $('.views').css('display', 'none');
 
     var vw = $('#projink-view');
-    $('#plist').html();
-
     pjk.active_project_id = ele.attr('rel');
     vw.find('h2').text(pjk.collections[pjk.active_project_id]);
-    buildProjectView(pjk, vw);
+    buildProjectView(pjk);
     vw.show();
 });
-$(document).on("dblclick", ".open-url", function(){
+/* double clicking list item should do something someday */
+$(document).on("click", ".open-url-new-tab", function(){
     var ele = $(this);
-    chrome.tabs.create({ url: ele.text() });
+    chrome.tabs.create({ url: ele.attr('rel') });
 });
+$(document).on("click", ".open-url", function(){
+    var ele = $(this);
+    //window.location.href = ele.attr('rel');
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        var tab = tabs[0];
+        chrome.tabs.update(tab.id, {url: ele.attr('rel')});
+    });
+});
+$(document).on("click", ".remove-link", function(){
+    var ele = $(this);
+    pjk.removeLinkFromActive(ele.attr('rel'));
+    buildProjectView(pjk);
+});
+
 var buildProjectView = function(pjk){
     vw = $('#plist');
+    vw.html('');
+
     if ( pjk.projinks[pjk.active_project_id].links.length > 0 ){
         for( var i = 0; i < pjk.projinks[pjk.active_project_id].links.length; i++ ){
-            vw.append( "<li class='open-url'>" + pjk.projinks[pjk.active_project_id].links[i] + "</li>" );
+            vw.append( 
+                "<tr>"+
+
+                "<td>"+
+                    "<a href='#' class='open-url' rel='"+ pjk.projinks[pjk.active_project_id].links[i] +"'>open url</a> "+
+                    "<a href='#' class='open-url-new-tab' rel='"+ pjk.projinks[pjk.active_project_id].links[i] +"'>o in new tab</a> "+
+                    "<a href='#' class='remove-link' rel='"+ i +"'>remove</a>"+
+                "</td>"+
+                "<td>" + 
+                    pjk.projinks[pjk.active_project_id].links[i] + 
+                "</td></tr>"
+                );
         }
     }
 }
