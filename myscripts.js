@@ -20,7 +20,6 @@ var PJK = function(){
             if(jQuery.isEmptyObject(result)) return;
             pjk.setCollections(result.content_store.collections);
             pjk.setProjinks(result.content_store.projinks);
-            console.log(pjk);
         });
         return;
     }
@@ -91,9 +90,11 @@ var PJK = function(){
 }
 
 var pjk;
-current_tab_url();
+
 
 $(document).ready(function(){
+
+    current_tab_url();
     
     pjk = new PJK();
 
@@ -199,4 +200,11 @@ var show_plist = function(pjk){
         }
     }
 
+}
+
+var current_tab_url = function(){
+    if ( chrome.tabs == undefined) return;
+    chrome.tabs.query({ active: true, lastFocusedWindow: true }, function(tabs) {
+        $('#live-url').val(tabs[0].url);
+    });
 }
