@@ -61,3 +61,10 @@ var buildProjectView = function(pjk){
         }
     }
 }
+
+var load_splash = function(pjk){
+    setTimeout( function trigclick(){
+        //should show active or plist if no active
+        $("#pjk-action-pl").trigger("click");
+    }, 100);
+}

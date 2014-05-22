@@ -44,6 +44,13 @@ header#topbar ul li:first-child{
 #layout{
 	height: 260px;
 }
+.fill-screen{
+	height: 260px;
+}
+.subscreen-overflow{
+	height: 100%;
+	overflow: auto;
+}
 
 #plist-left{
 	float: left;

@@ -50,3 +50,7 @@ $(document).on("click", ".add-url", function(){
     pjk.addURL();
     buildProjectView(pjk)
 });
+
+$(document).on("click", "#btn-view-create-project", function(){
+    create_project(pjk);
+});
