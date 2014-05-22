@@ -1,39 +1,30 @@
 <html>
 	<head>
-		<title>One One One</title>
-		<style>
-			body{
-				width: 533px;
-				height: 300px;
-			}
+		<title>Projinks</title>
 
-			.max-width{
-				width: 60%;
-			}
-			.views{
-				display: none;
-			}
-			#plist li{
-				display: block;
-			}
-		</style>
-    	<script type="text/javascript" src="popup.js"></script>
-    	<script type="text/javascript" src="jquery.js"></script>
-    	<script type="text/javascript" src="myscripts.js"></script>
-
-
+		<link rel="stylesheet" type="text/css" href="css/styles.css" />
+    	<script type="text/javascript" src="js/popup.js"></script>
+    	<script type="text/javascript" src="js/jquery.js"></script>
+    	<script type="text/javascript" src="js/pjk.js"></script>
+    	<script type="text/javascript" src="js/myscripts.js"></script>
 	</head>
 	<body>
-		<header>
-			<h1>Projinks == Project + Links</h1>	
-		</header>
-
-		<section style="padding: 10px 0px; border-top: 1px solid #d7d7d7; border-bottom: 1px solid #d7d7d7;">
-			<nav>
-				<a href="#" id="lk-cp">Create Project</a>
-				<a href="#" id="lk-pl">Project List</a>
-			</nav>
+		<section class="gray-back">
+			<header id="topbar" class="general-padded-block">
+				<ul>
+					<li>
+						Projinks == Project + Links
+					</li>
+					<li class="topnav-item" id="pjk-action-pl">
+						<span>LIST</span>
+					</li>
+					<li class="topnav-item" id="pjk-action-cp">
+						<span>NEW</span>
+					</li>
+				</ul>	
+			</header>
 		</section>
+
 		<section id="layout">
 			<div id="view-create-project" class="views">
 				<label>Project Name
@@ -43,9 +34,15 @@
 				<button id="btn-view-create-project">+Create</button>
 			</div>
 			<div id="prolist" class="views" style="overflow: auto; height: 100%;">
-				<ul style="list-style-type:none;">
+				<section id="plist-left" class="general-padded-block">
+					Active
+				</section>
+				<section id="plist-right" class="general-padded-block">
+					<ul style="list-style-type:none;">
 
-				</ul>
+					</ul>
+				</section>
+				<div style="clear: both;"></div>
 			</div>
 			<div id="projink-view" class="views">
 				<h2>Projink Name</h2>
@@ -53,8 +50,10 @@
 				<table id="plist"></table>
 			</div>
 		</section>
-		<section>
-			Live URL <input type="text" name="live_url" id="live-url" />
+
+		<footer class="general-padded-block gray-back">
+			Live URL 
+			<input type="text" name="live_url" id="live-url" />
 		<section>
 	</body>
 </html>
