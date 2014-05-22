@@ -55,8 +55,18 @@ header#topbar ul li:first-child{
 	float: left;
 	width: 400px;
 	height : 254px;
+	overflow: auto;
 }
-
+#plist-right ul li{
+	font-size: 2em;
+	padding: 10px 5px;
+	cursor: pointer;
+	border-left: 4px solid #d7d7d7;
+	border-bottom: 1px solid #d7d7d7;
+}
+#plist-right ul li:hover{
+	background-color: #d7d7d7;
+}
 
 /** Footer */
 #live-url{

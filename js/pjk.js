@@ -10,7 +10,6 @@ var PJK = function(){
         this.retrieveStorage(this);
     }
     this.retrieveStorage = function(pjk){
-        var colls = [];
         chrome.storage.sync.get('content_store', function(result){
             if(jQuery.isEmptyObject(result)) return;
             pjk.setCollections(result.content_store.collections);

@@ -1,28 +1,10 @@
-var App = {};
-App.version = "0.0.0.1";
 
-var pjk;
 
 
 $(document).on("click", "#pjk-action-pl", function(){
     $('.views').css('display','none');
     $('#prolist').show();
     show_plist(pjk);
-});
-
-$(document).ready(function(){
-
-    current_tab_url();
-    
-    pjk = new PJK();
-    console.log(pjk);
-    $("#pjk-action-pl").trigger("click");
-
-    $('#btn-view-create-project').click(function(){
-        create_project(pjk);
-    });
-
-
 });
 
 $(document).on("click", "#pjk-action-cp", function(){
@@ -109,12 +91,22 @@ var create_project = function(pjk){
 
 var show_plist = function(pjk){
 
-    if ( pjk.collection_count() ){
+    if ( pjk.collection_count() > 0 ){
         var lt = pjk.collections;
-        $('#prolist ul').html("");
+        var ele = $('#prolist #plist-right ul');
+        ele.html("");
         for ( var i = 0; i < lt.length; i++){
-            $('#prolist ul').append("<li>"+ lt[i] +" <a href='#' rel='"+ i +"' class='remove-project'>remove</a> <a href='#' class='open-project' rel='"+ i +"'>open</a></li>");
+            ele.append(
+                "<li class='open-project' rel='"+ i +"'>"+
+                    lt[i] +
+                    //" <a href='#' rel='"+ i +"' class='remove-project'>R</a>"+
+                    //"<a href='#' class='open-project' rel='"+ i +"'>O</a>"+
+                "</li>"
+                );
         }
+    } else {
+
+        // no projects should have a fall back
     }
 
 }
@@ -125,3 +117,22 @@ var current_tab_url = function(){
         $('#live-url').val(tabs[0].url);
     });
 }
+
+var App = {};
+App.version = "0.0.0.1";
+
+
+current_tab_url();
+var pjk = new PJK();
+
+$(document).ready(function(){
+    //may need a timeout aspect to retriving storage.. It tends to not be ready 
+    
+
+    $('#btn-view-create-project').click(function(){
+        create_project(pjk);
+    });
+
+    $("#pjk-action-pl").trigger("click");
+});
+
