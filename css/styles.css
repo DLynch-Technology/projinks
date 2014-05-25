@@ -60,7 +60,6 @@ header#topbar ul li:first-child{
 	float: left;
 	width: 120px;
 	height : 254px;
-	background-color: #E6E6FA;
 }
 #plist-right{
 	float: left;
@@ -100,7 +99,22 @@ header#topbar ul li:first-child{
 	margin-bottom: 10px;
 }
 
+.secondary-back{
+	background-color: #E6E6FA;
+}
 
+#cp-view{
+	font-size: 3em;
+	text-align: center;
+	padding: 15px;
+}
+#cp-view input[type=text]{
+	display: block;
+	width: 100%;
+	font-size: .9em;
+	background-color: #EEEEEE;
+	margin: 25px 0px;
+}
 /** Footer */
 #live-url{
 	width : 350px;

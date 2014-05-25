@@ -77,6 +77,11 @@ var PJK = function(){
     this.removeCollection = function(id_to_remove){
         this.collections.splice(id_to_remove,1);
         this.projinks.splice(id_to_remove, 1);
+
+        var ck_exist = this.recent_projinks.indexOf(id_to_remove);
+        if ( ck_exist > -1) this.recent_projinks.splice(ck_exist, 1);
+        this.active_project_id = "";
+
         this.saveStorage();
     }
     this.removeLinkFromActive = function(index){
@@ -105,6 +110,10 @@ var PJK = function(){
         }
 
         pjk.recent_projinks.unshift(id);
+    }
+    this.clearActiveLinks = function(){
+        this.projinks[this.active_project_id].links = [];
+        this.saveStorage();
     }
 
     this.init();

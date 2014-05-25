@@ -28,15 +28,16 @@
 		</section>
 
 		<section id="layout">
-			<div id="view-create-project" class="views">
-				<label>Project Name
-					<input type="text" name="pname" id="pname" placeholder="what is your project name" />
-				</label>
-
-				<button id="btn-view-create-project">+Create</button>
+			<div id="view-create-project" class="views fill-screen secondary-back">
+				<div id="cp-view">
+					<label>Projink Name
+						<input type="text" name="pname" id="pname" placeholder="a-z0-9\s" />
+					</label>
+					<button id="btn-view-create-project">+Create</button>
+				</div>
 			</div>
 			<div id="prolist" class="views">
-				<section id="plist-left" class="general-padded-block">
+				<section id="plist-left" class="general-padded-block secondary-back">
 					Recent
 					<div id="recent-list"></div>
 				</section>
@@ -51,6 +52,8 @@
 				<article class="subscreen-header">
 					<h2>Projink Name</h2>
 					<button class="add-url">Add Url</button>
+					<button class="reset-projink">Clear Links</button>
+					<button class="remove-projink">Delete PJk</button>
 				</article>
 				<section class="subscreen-overflow">
 					<ul id="plist"></ul>

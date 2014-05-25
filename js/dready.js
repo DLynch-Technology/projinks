@@ -10,11 +10,10 @@ $(document).on("click", "#pjk-action-cp", function(){
     $('#view-create-project').show();
 });
 
-$(document).on("click", ".remove-project",function() {
-    var ele = $(this);
-    var id_to_remove = ele.attr('rel');
-    pjk.removeCollection(id_to_remove);
-    ele.parent().remove();
+$(document).on("click", ".remove-projink",function() {
+    pjk.removeCollection(pjk.active_project_id);
+    $('#pjk-action-pl').trigger("click");
+
 });
 
 $(document).on("click", ".open-project", function(){
@@ -53,6 +52,10 @@ $(document).on("click", ".remove-link", function(){
 
 $(document).on("click", ".add-url", function(){
     pjk.addURL();
+    buildProjectView(pjk);
+});
+$(document).on("click", ".reset-projink", function(){
+    pjk.clearActiveLinks();
     buildProjectView(pjk);
 });
 
