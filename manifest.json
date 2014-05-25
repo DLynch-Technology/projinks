@@ -3,7 +3,7 @@
 
   "name": "projinks",
   "description": "Links for my project == projinks",
-  "version": "1.0",
+  "version": "0.0.1",
   "permissions":[
   	"tabs",
     "storage"

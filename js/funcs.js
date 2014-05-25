@@ -47,16 +47,13 @@ var buildProjectView = function(pjk){
     if ( pjk.projinks[pjk.active_project_id].links.length > 0 ){
         for( var i = 0; i < pjk.projinks[pjk.active_project_id].links.length; i++ ){
             vw.append( 
-                "<tr>"+
-
-                "<td>"+
-                    "<a href='#' class='open-url' rel='"+ pjk.projinks[pjk.active_project_id].links[i] +"'>open url</a> "+
+                "<li><span class='bigtext'>"+
+                    pjk.projinks[pjk.active_project_id].links[i] + 
+                    "</span><br /><a href='#' class='open-url' rel='"+ pjk.projinks[pjk.active_project_id].links[i] +"'>open url</a> "+
                     "<a href='#' class='open-url-new-tab' rel='"+ pjk.projinks[pjk.active_project_id].links[i] +"'>o in new tab</a> "+
                     "<a href='#' class='remove-link' rel='"+ i +"'>remove</a>"+
-                "</td>"+
-                "<td>" + 
-                    pjk.projinks[pjk.active_project_id].links[i] + 
-                "</td></tr>"
+                    
+                "</li>"
                 );
         }
     }
