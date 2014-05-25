@@ -19,10 +19,15 @@ $(document).on("click", ".remove-project",function() {
 
 $(document).on("click", ".open-project", function(){
     var ele = $(this);
+    pjk.active_project_id = ele.attr('rel');
+    map_rel_to_add_button(pjk.active_project_id);
     $('.views').css('display', 'none');
 
     var vw = $('#projink-view');
-    pjk.active_project_id = ele.attr('rel');
+    pjk.addToRecent(pjk.active_project_id);
+    pjk.saveStorage();  // saving all -- can probably just save one here investigate further
+
+    
     vw.find('h2').text(pjk.collections[pjk.active_project_id]);
     buildProjectView(pjk);
     vw.show();
@@ -48,7 +53,7 @@ $(document).on("click", ".remove-link", function(){
 
 $(document).on("click", ".add-url", function(){
     pjk.addURL();
-    buildProjectView(pjk)
+    buildProjectView(pjk);
 });
 
 $(document).on("click", "#btn-view-create-project", function(){

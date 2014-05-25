@@ -20,11 +20,25 @@ var show_plist = function(pjk){
             ele.append(
                 "<li class='open-project' rel='"+ i +"'>"+
                     lt[i] +
-                    //" <a href='#' rel='"+ i +"' class='remove-project'>R</a>"+
-                    //"<a href='#' class='open-project' rel='"+ i +"'>O</a>"+
                 "</li>"
                 );
         }
+
+        var rele = $('#recent-list');
+        rele.html('');
+        var coll_length = pjk.recent_projinks.length;
+        if ( coll_length > 5 ) coll_length = 5;
+        for ( var i = 0; i < coll_length; i++){
+            var pj_id = pjk.recent_projinks[i];
+            var coll = pjk.collections[pj_id];
+            var display_text = coll.charAt(0).toUpperCase();
+            rele.append(
+                "<article class='open-project letter-blocks' rel='"+ pj_id +"'>"
+                + display_text
+                + "</article>"
+            );
+        }
+
     } else {
 
         // no projects should have a fall back
@@ -49,9 +63,9 @@ var buildProjectView = function(pjk){
             vw.append( 
                 "<li><span class='bigtext'>"+
                     pjk.projinks[pjk.active_project_id].links[i] + 
-                    "</span><br /><a href='#' class='open-url' rel='"+ pjk.projinks[pjk.active_project_id].links[i] +"'>open url</a> "+
-                    "<a href='#' class='open-url-new-tab' rel='"+ pjk.projinks[pjk.active_project_id].links[i] +"'>o in new tab</a> "+
-                    "<a href='#' class='remove-link' rel='"+ i +"'>remove</a>"+
+                    "</span><br /><a href='#' class='open-url' rel='"+ pjk.projinks[pjk.active_project_id].links[i] +"'>Open</a> "+
+                    "<a href='#' class='open-url-new-tab' rel='"+ pjk.projinks[pjk.active_project_id].links[i] +"'>New Tab</a> "+
+                    "<a href='#' class='remove-link' rel='"+ i +"'>Delete</a>"+
                     
                 "</li>"
                 );
@@ -64,4 +78,9 @@ var load_splash = function(pjk){
         //should show active or plist if no active
         $("#pjk-action-pl").trigger("click");
     }, 100);
+}
+
+var map_rel_to_add_button = function(id){
+    var button = $('#footer-add-url');
+    button.attr('rel',id);
 }

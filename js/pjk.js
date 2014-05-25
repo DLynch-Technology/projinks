@@ -5,15 +5,34 @@ var PJK = function(){
     this.error_message = "";
     this.current_tab_url = "";
     this.active_project_id = "";
+    this.recent_projinks = [];
 
     this.init = function(){
         this.retrieveStorage(this);
+    }
+    this.packMeta = function(){
+        return {
+            'recent_projinks' : this.recent_projinks,
+            'active_project_id' : this.active_project_id
+        }
+    }
+    this.unpackMeta = function(obj){
+        this.recent_projinks = obj.recent_projinks;
+        this.active_project_id = obj.active_project_id;
+    }
+    this.saveStorage = function(){
+        var content_store = {};
+        content_store.meta = this.packMeta();
+        content_store.collections = this.collections;
+        content_store.projinks = this.projinks;
+        chrome.storage.sync.set({'content_store' : content_store});
     }
     this.retrieveStorage = function(pjk){
         chrome.storage.sync.get('content_store', function(result){
             if(jQuery.isEmptyObject(result)) return;
             pjk.setCollections(result.content_store.collections);
             pjk.setProjinks(result.content_store.projinks);
+            pjk.unpackMeta(result.content_store.meta);
         });
         return;
     }
@@ -47,12 +66,6 @@ var PJK = function(){
         });
         return true;
     }
-    this.saveStorage = function(){
-        var content_store = {};
-        content_store.collections = this.collections;
-        content_store.projinks = this.projinks;
-        chrome.storage.sync.set({'content_store' : content_store});
-    }
     this.addURL = function(){
         this.buildCurrentURL();
         this.projinks[this.active_project_id].links.push(this.current_tab_url);
@@ -80,5 +93,19 @@ var PJK = function(){
         // for loop / try match project 1 // or loop and no match go with that number
         return "";
     }
+    this.addToRecent = function(id){
+        if ( pjk.recent_projinks.length == undefined ){
+            pjk.recent_projinks.push(id);
+            return;
+        }
+
+        var ck_4_val = pjk.recent_projinks.indexOf(id);
+        if ( ck_4_val > -1 ){
+            pjk.recent_projinks.splice(ck_4_val, 1);
+        }
+
+        pjk.recent_projinks.unshift(id);
+    }
+
     this.init();
 }

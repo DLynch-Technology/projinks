@@ -91,6 +91,15 @@ header#topbar ul li:first-child{
 	font-size: 1.5em;
 }
 
+.letter-blocks{
+	font-size: 2.5em;
+	width: 100px;
+	text-align: center;
+	background-color: #EEEEEE;
+	cursor: pointer;
+	margin-bottom: 10px;
+}
+
 
 /** Footer */
 #live-url{
