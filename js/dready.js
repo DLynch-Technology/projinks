@@ -46,8 +46,10 @@ $(document).on("click", ".open-url", function(){
 });
 $(document).on("click", ".copy-url", function(){
     var ele = $(this).parent().find('input');
-    ele.focus();
-    ele.select();
+    var live_url = $('#live-url');
+    live_url.val(ele.val());
+    live_url.focus();
+    live_url.select();
     document.execCommand('Copy');
 });
 

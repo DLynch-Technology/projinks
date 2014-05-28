@@ -67,7 +67,7 @@ var buildProjectView = function(pjk){
                     "<input type='hidden' value='"+ pjk.projinks[pjk.active_project_id].links[i] +"' />"+
                     "<br /><a href='#' class='open-url' rel='"+ pjk.projinks[pjk.active_project_id].links[i] +"'>Open</a> "+
                     "<a href='#' class='open-url-new-tab' rel='"+ pjk.projinks[pjk.active_project_id].links[i] +"'>New Tab</a> "+
-                    "<a href='#' class='copy-url' rel='"+ pjk.projinks[pjk.active_project_id].links[i] +"'>Copy</a> "+
+                    "<a href='#' class='copy-url' rel='"+ pjk.projinks[pjk.active_project_id].links[i] +"'>Copy to Clipboard</a> "+
                     "<a href='#' class='remove-link' rel='"+ i +"'>Delete</a>"+
                 "</li>"
                 );
@@ -85,17 +85,4 @@ var load_splash = function(pjk){
 var map_rel_to_add_button = function(id){
     var button = $('#footer-add-url');
     button.attr('rel',id);
-}
-
-// function from http://www.pakzilla.com/2012/03/20/how-to-copy-to-clipboard-in-chrome-extension/
-function copyToClipboard( text ){
-    var copyDiv = document.createElement('div');
-    copyDiv.contentEditable = true;
-    document.body.appendChild(copyDiv);
-    copyDiv.innerHTML = text;
-    copyDiv.unselectable = "off";
-    copyDiv.focus();
-    document.execCommand('SelectAll');
-    document.execCommand("Copy", false, null);
-    document.body.removeChild(copyDiv);
 }
