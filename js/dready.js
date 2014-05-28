@@ -44,6 +44,13 @@ $(document).on("click", ".open-url", function(){
         chrome.tabs.update(tab.id, {url: ele.attr('rel')});
     });
 });
+$(document).on("click", ".copy-url", function(){
+    var ele = $(this).parent().find('input');
+    ele.focus();
+    ele.select();
+    document.execCommand('Copy');
+});
+
 $(document).on("click", ".remove-link", function(){
     var ele = $(this);
     pjk.removeLinkFromActive(ele.attr('rel'));
