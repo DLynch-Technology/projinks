@@ -9,12 +9,6 @@
     "storage",
     "clipboardWrite"
   ],
-  "content_scripts": [
-    {
-      "matches" : ["http://*/*"],
-      "js" : ["js/jquery.js","js/myscripts.js"]
-    }
-  ],
   "icons": { 
     "16" : "images/pj_icon16.png",
     "48" : "images/pj_icon48.png",
