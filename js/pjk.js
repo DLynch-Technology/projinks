@@ -77,12 +77,23 @@ var PJK = function(){
     this.removeCollection = function(id_to_remove){
         this.collections.splice(id_to_remove,1);
         this.projinks.splice(id_to_remove, 1);
+        this.clean_recent_projects();
 
         var ck_exist = this.recent_projinks.indexOf(id_to_remove);
         if ( ck_exist > -1) this.recent_projinks.splice(ck_exist, 1);
         this.active_project_id = "";
 
         this.saveStorage();
+    }
+    this.isCollection = function(id){
+        if ( id == null ) return false;
+        if ( typeof this.projinks[id] == 'undefined') return false;
+        return true;
+    }
+    this.clean_recent_projects = function(){
+        for ( i = 0; i < this.recent_projinks.length; i++){
+            if ( !this.isCollection(this.recent_projinks[i]) ) this.recent_projinks.splice(i, 1);
+        }
     }
     this.removeLinkFromActive = function(index){
         this.projinks[this.active_project_id].links.splice(index,1);

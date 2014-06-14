@@ -23,6 +23,7 @@ var show_plist = function(pjk){
                 "</li>"
                 );
         }
+        pjk.clean_recent_projects();
 
         var rele = $('#recent-list');
         rele.html('');
