@@ -193,3 +193,10 @@ a{
 	color: #68228B;
 	text-decoration: none;
  }
+
+ a:hover{
+	color: #68228B;
+	text-decoration: underline;
+	font-weight: 700;
+
+ }
