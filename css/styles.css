@@ -188,3 +188,8 @@ button:hover{
 	color:#fff;
 	background-color: #68228B;
 }
+
+a{
+	color: #68228B;
+	text-decoration: none;
+ }
