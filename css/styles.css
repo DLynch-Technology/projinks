@@ -4,19 +4,26 @@ body{
 	padding : 0px;
 	margin : 0px;
 	color : #262626;
-	font-size : .8em;
+	font-size : 12x;
+	font: Helvetica;
 }
 
 /** Global */
 ul,li {
 	list-style-type : none;
 }
-ul,li,p,h1,h2,h3{
-	padding : 0px;
-	margin : 0px;
+ul,li,p,h2,h3{
+	text-align: center;
+	padding : 0;
+	margin : 0 auto;
+	font-weight: 700;
+	font-family: Arial;
+	font-size: 14px;
 }
+
 .general-padded-block{
 	padding : 3px;
+	z-index: 100;
 }
 .views{
 	display : none;
@@ -36,8 +43,10 @@ header#topbar ul li:first-child{
 .topnav-item{
 	background-color: #68228B;
 	color: white;
-	padding: 1px 5px;
+	padding: 3px 6px;
 	cursor: pointer;
+	border-radius: 5px;
+
 }
 
 /** Layout */
@@ -48,8 +57,9 @@ header#topbar ul li:first-child{
 	height: 260px;
 }
 .subscreen-header{
-	height: 70px;
-	background-color: #E6E6FA;
+	height: 80px;
+	background-color: #efebf1;
+	text-align: center;
 }
 .subscreen-overflow{
 	height: 190px;
@@ -57,9 +67,13 @@ header#topbar ul li:first-child{
 }
 
 #plist-left{
+	z-index:1;
+	text-align: center;
 	float: left;
 	width: 120px;
 	height : 254px;
+	background-color: #efebf1;
+
 }
 #plist-right{
 	float: left;
@@ -92,21 +106,26 @@ header#topbar ul li:first-child{
 
 .letter-blocks{
 	font-size: 2.5em;
-	width: 100px;
 	text-align: center;
 	background-color: #EEEEEE;
 	cursor: pointer;
 	margin-bottom: 10px;
+	margin-right: 0;
 }
 
 .secondary-back{
-	background-color: #E6E6FA;
+	background-color: #efebf1;
+	z-index: -1;
+	font-family: arial;
+	font-weight: 700;
+	color: #131313;
 }
 
 #cp-view{
 	font-size: 3em;
 	text-align: center;
 	padding: 15px;
+	color: #131313;
 }
 #cp-view input[type=text]{
 	display: block;
@@ -115,8 +134,57 @@ header#topbar ul li:first-child{
 	background-color: #EEEEEE;
 	margin: 25px 0px;
 }
+
+#recent-list{
+	text-align: center;
+}
+
+.subscreen-header button{
+	margin-top: 5px;
+	margin-left: 10px;
+}
+
+.subscreen-header h2{
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
 /** Footer */
 #live-url{
 	width : 350px;
+	padding:3px;
+	border-radius: 5px;
 
+}
+#footer_div{
+	padding:10px;
+	font-family: arial;
+}
+
+#footer_div button{
+	margin-left: 10px;
+}
+
+#footer_div{
+	text-align: center;
+}
+
+#footer_div input{
+	padding: 5px;
+	border-radius: 5px;
+	border: 1px solid #68228B;
+	background-color: #efebf1;
+	margin-left: 10px;
+}
+button{
+	padding: 3px;
+	border: 1px solid #68228B;
+	border-radius: 5px;
+	background:#fff;
+	font-family: arial;
+	font-weight: 700;
+	color: #68228B;
+}
+button:hover{
+	color:#fff;
+	background-color: #68228B;
 }
