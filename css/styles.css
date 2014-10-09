@@ -56,27 +56,13 @@ header#topbar ul li:first-child{
 	overflow: auto;
 }
 
-#plist-left{
-	float: left;
-	width: 120px;
-	height : 254px;
-}
-#plist-right{
-	float: left;
-	width: 400px;
-	height : 254px;
-	overflow: auto;
-}
-#plist-right ul li{
-	font-size: 2em;
-	padding: 10px 5px;
+#projinks-listing ul li{
+	color: #68228b;
+	background-color: #e7dbed;
+	padding: 4px;
 	cursor: pointer;
-	border-left: 4px solid #d7d7d7;
-	border-bottom: 1px solid #d7d7d7;
 }
-#plist-right ul li:hover{
-	background-color: #d7d7d7;
-}
+
 
 #plist li{
 	padding: 10px 5px;

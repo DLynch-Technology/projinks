@@ -14,7 +14,7 @@ var show_plist = function(pjk){
 
     if ( pjk.collection_count() > 0 ){
         var lt = pjk.collections;
-        var ele = $('#prolist #plist-right ul');
+        var ele = $('#prolist #projinks-listing ul');
         ele.html("");
         for ( var i = 0; i < lt.length; i++){
             ele.append(
