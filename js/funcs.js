@@ -19,6 +19,7 @@ var show_plist = function(pjk){
         for ( var i = 0; i < lt.length; i++){
             ele.append(
                 "<li class='open-project' rel='"+ i +"'>"+
+                    "+ " +
                     lt[i] +
                 "</li>"
                 );
