@@ -140,8 +140,23 @@ header#topbar ul li:first-child{
 	border-bottom: solid 2px #fff;
 	margin-left: 260px;
 	margin-top: 10px;
+	color:#fff;
+	padding:2px;
+}
+.footer input{
+	background-color:#56565e;
+	float: left;
+	border: solid 0px;
+	border-bottom: solid 2px #fff;
+	margin-left: 260px;
+	margin-top: 10px;
+	color:#fff;
+	padding:2px;
 }
 
+.footer textarea:focus, input:focus{
+    outline: 0;
+}
 .footer span{
 	float: left;
 	font-family: arial;
