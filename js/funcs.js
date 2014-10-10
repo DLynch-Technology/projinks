@@ -93,10 +93,15 @@ var buildProjectView = function(pjk){
     }
 }
 
-var expand_projink = function(ele){
+var toggle_projink = function(ele){
     var expander = ele.find('span.expander');
     switch_expander(expander);
-    var subele = ele.find('ul.list-item-children').show();
+    var subele = ele.find('ul.list-item-children');
+    if ( subele.is(':visible') ){
+        subele.hide();
+    } else {
+        subele.show();
+    }
 }
 
 var switch_expander = function(ele){
