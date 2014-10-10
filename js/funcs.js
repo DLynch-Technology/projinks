@@ -35,8 +35,9 @@ var show_plist = function(pjk){
             ele.append(
                 "<li id='list-item"+ i +"'class='open-project' rel='"+ i +"'>"+
                     "<span class='expander'>+</span> " +
-                    "<span class='ptitle'>" + lt[i] + "</span>"
-                    + "<ul style='display: none;' class='list-item-children'>" + links_holder + "</ul>" +
+                    "<span class='ptitle'>" + lt[i] + "</span>" +
+                    " <a href='#'>edit</a>"+
+                    "<ul style='display: none;' class='list-item-children'>" + links_holder + "</ul>" +
                 "</li>"
             );
         }
