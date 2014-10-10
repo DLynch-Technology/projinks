@@ -18,18 +18,24 @@ $(document).on("click", ".remove-projink",function() {
 
 $(document).on("click", ".open-project", function(){
     var ele = $(this);
-    pjk.active_project_id = ele.attr('rel');
-    map_rel_to_add_button(pjk.active_project_id);
-    $('.views').css('display', 'none');
 
-    var vw = $('#projink-view');
-    pjk.addToRecent(pjk.active_project_id);
-    pjk.saveStorage();  // saving all -- can probably just save one here investigate further
+    pjk.active_project_id = ele.attr('rel');
+
+    expand_projink(pjk,ele);
 
     
-    vw.find('h2').text(pjk.collections[pjk.active_project_id]);
-    buildProjectView(pjk);
-    vw.show();
+    //map_rel_to_add_button(pjk.active_project_id);
+    
+
+    //$('.views').css('display', 'none');
+    //var vw = $('#projink-view');
+    //pjk.addToRecent(pjk.active_project_id);
+    //pjk.saveStorage();  // saving all -- can probably just save one here investigate further
+
+    
+    //vw.find('h2').text(pjk.collections[pjk.active_project_id]);
+    //buildProjectView(pjk);
+    //vw.show();
 });
 /* double clicking list item should do something someday */
 $(document).on("click", ".open-url-new-tab", function(){

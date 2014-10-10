@@ -17,12 +17,28 @@ var show_plist = function(pjk){
         var ele = $('#prolist #projinks-listing ul');
         ele.html("");
         for ( var i = 0; i < lt.length; i++){
+            var links_holder = "";
+            if ( pjk.projinks[i].links.length > 0 ){
+                for( var j = 0; j < pjk.projinks[i].links.length; j++ ){
+                    links_holder += "<li><span class='bigtext'>";
+                    links_holder += pjk.projinks[i].links[j];
+                    links_holder += "</span>";
+                    links_holder += "<input type='hidden' value='"+ pjk.projinks[i].links[j] +"' />";
+                    links_holder += "<br /><a href='#' class='open-url' rel='"+ pjk.projinks[i].links[j] +"'>Open</a> ";
+                    links_holder += "<a href='#' class='open-url-new-tab' rel='"+ pjk.projinks[i].links[j] +"'>New Tab</a> ";
+                    links_holder += "<a href='#' class='copy-url' rel='"+ pjk.projinks[i].links[j] +"'>Copy to Clipboard</a> ";
+                    links_holder += "<a href='#' class='remove-link' rel='"+ j +"'>Delete</a>";
+                    links_holder += "</li>";
+                }
+            }
+
             ele.append(
-                "<li class='open-project' rel='"+ i +"'>"+
+                "<li id='list-item"+ i +"'class='open-project' rel='"+ i +"'>"+
                     "+ " +
-                    lt[i] +
+                    lt[i]
+                    + "<ul style='display: none;'>" + links_holder + "</ul>" +
                 "</li>"
-                );
+            );
         }
         pjk.clean_recent_projects();
 
