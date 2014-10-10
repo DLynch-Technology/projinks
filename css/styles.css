@@ -16,7 +16,6 @@ ul,li,p,h1,h2,h3{
 	margin : 0px;
 }
 .general-padded-block{
-	padding : 3px;
 }
 .views{
 	display : none;
@@ -28,16 +27,33 @@ ul,li,p,h1,h2,h3{
 }
 header#topbar ul li{
 	display : inline-block;
-	margin-right : 5px;
+	margin-right : 2px;
 }
 header#topbar ul li:first-child{
-	margin-right: 20px;
+	margin-right: 2px;
 }
 .topnav-item{
-	background-color: #68228B;
 	color: white;
 	padding: 1px 5px;
 	cursor: pointer;
+}
+.logo{
+	float: left;
+}
+.header_icons{
+	float: left;
+	padding: 5px;
+	margin: 10px 0 10px 100px;
+	background-color: #56565e;
+	border-radius: 10px;
+}
+
+.header_icons li{
+	font-size: 14px;
+	color:#fff;
+	font-family: "Helvetica Black";
+	font-weight: 900;
+
 }
 
 /** Layout */
