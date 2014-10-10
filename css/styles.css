@@ -45,6 +45,7 @@ header#topbar ul li:first-child{
 	color: white;
 	padding: 1px 5px;
 	cursor: pointer;
+	font-family: arial;
 }
 .logo{
 	float: left;
@@ -54,17 +55,16 @@ header#topbar ul li:first-child{
 .header_icons{
 	float: left;
 	padding: 5px;
-	margin: 15px 0 10px 100px;
+	margin: 15px 0 5px 100px;
 	background-color: #56565e;
 	border-radius: 10px;
 }
 
-.header_icons li{
+.header_icons li span{
 	font-size: 14px;
 	color:#fff;
-	font-family: "Arial Black";
 	font-weight: 900;
-
+	font-family: arial;
 }
 
 /** Layout */
@@ -130,7 +130,24 @@ header#topbar ul li:first-child{
 	margin: 25px 0px;
 }
 /** Footer */
-#live-url{
-	width : 350px;
+.footer{
+	height:40px;
+	background-color:#56565e;
+	margin: 5px;
+}
 
+.footer input {
+	background-color:#56565e;
+	float: left;
+	border: solid 0px;
+	border-bottom: solid 2px #fff;
+	margin-left: 260px;
+	margin-top: 10px;
+}
+
+.footer span{
+	float: left;
+	font-family: arial;
+	margin-top:12px;
+	color:#fff;
 }
