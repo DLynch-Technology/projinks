@@ -130,6 +130,7 @@ header#topbar ul li:first-child{
 }
 /** Footer */
 .footer{
+	border-top: solid 1px #000;
 	height:40px;
 	background-color:#56565e;
 	margin: 5px;
