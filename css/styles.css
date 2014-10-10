@@ -31,9 +31,6 @@ ul,li,p,h1,h2,h3{
 }
 
 /** header */
-.gray-back{
-	background-color : #1d1d1d;
-}
 header#topbar ul li{
 	display : inline-block;
 	margin-right : 2px;
