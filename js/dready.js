@@ -16,8 +16,9 @@ $(document).on("click", ".remove-projink",function() {
 
 });
 
-$(document).on("click", ".open-project", function(){
-    var ele = $(this);
+$(document).on("click", ".open-project span.ptitle, .open-project span.expander", function(){
+
+    var ele = $(this).parent();
 
     pjk.active_project_id = ele.attr('rel');
 
