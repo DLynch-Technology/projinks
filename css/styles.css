@@ -17,11 +17,7 @@ ul,li,p,h1,h2,h3{
 }
 
 .header_icons{
-	display: inline;
-	background-color: #56565e;
-	border-radius: 10px;
-	color: #fff;
-	padding: 5px;
+	
 }
 
 .general-padded-block{
@@ -53,10 +49,14 @@ header#topbar ul li:first-child{
 .header_icons{
 	float: left;
 	padding: 5px;
-	margin: 15px 0 5px 100px;
+	margin: 15px 0 5px 150px;
 	background-color: #56565e;
 	border-radius: 10px;
 	margin-bottom:10px;
+	display: inline;
+	color: #fff;
+	font-size: 16px;
+	padding: 5px;
 }
 
 .header_icons li span{
@@ -150,7 +150,7 @@ header#topbar ul li:first-child{
 	float: left;
 	border: solid 0px;
 	border-bottom: solid 2px #fff;
-	margin-left: 260px;
+	margin-left: 300px;
 	margin-top: 10px;
 	color:#fff;
 	padding:2px;
