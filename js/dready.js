@@ -21,7 +21,7 @@ $(document).on("click", ".open-project", function(){
 
     pjk.active_project_id = ele.attr('rel');
 
-    expand_projink(pjk,ele);
+    expand_projink(ele);
 
     
     //map_rel_to_add_button(pjk.active_project_id);

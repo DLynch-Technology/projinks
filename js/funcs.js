@@ -34,9 +34,9 @@ var show_plist = function(pjk){
 
             ele.append(
                 "<li id='list-item"+ i +"'class='open-project' rel='"+ i +"'>"+
-                    "+ " +
+                    "<span class='expander'>+</span> " +
                     lt[i]
-                    + "<ul style='display: none;'>" + links_holder + "</ul>" +
+                    + "<ul style='display: none;' class='list-item-children'>" + links_holder + "</ul>" +
                 "</li>"
             );
         }
@@ -71,7 +71,7 @@ var current_tab_url = function(){
     });
 }
 
-
+// function to be deprecated
 var buildProjectView = function(pjk){
     vw = $('#plist');
     vw.html('');
@@ -90,6 +90,20 @@ var buildProjectView = function(pjk){
                 "</li>"
                 );
         }
+    }
+}
+
+var expand_projink = function(ele){
+    var expander = ele.find('span.expander');
+    switch_expander(expander);
+    var subele = ele.find('ul.list-item-children').show();
+}
+
+var switch_expander = function(ele){
+    if ( ele.text() == "+"){
+        ele.text("-");
+    } else {
+        ele.text("+");
     }
 }
 
