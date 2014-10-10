@@ -42,10 +42,6 @@ header#topbar ul li:first-child{
 	margin-right: 2px;
 }
 .topnav-item{
-<<<<<<< HEAD
-=======
-	background-color: #fff;
->>>>>>> b33cc56fd46617362651cec84f7a5bfd1fbdd30c
 	color: white;
 	padding: 1px 5px;
 	cursor: pointer;
@@ -64,7 +60,7 @@ header#topbar ul li:first-child{
 .header_icons li{
 	font-size: 14px;
 	color:#fff;
-	font-family: "Helvetica Black";
+	font-family: "Arial Black";
 	font-weight: 900;
 
 }
