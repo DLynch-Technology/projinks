@@ -20,15 +20,7 @@ var show_plist = function(pjk){
             var links_holder = "";
             if ( pjk.projinks[i].links.length > 0 ){
                 for( var j = 0; j < pjk.projinks[i].links.length; j++ ){
-                    links_holder += "<li><span class='bigtext'>";
-                    links_holder += pjk.projinks[i].links[j];
-                    links_holder += "</span>";
-                    links_holder += "<input type='hidden' value='"+ pjk.projinks[i].links[j] +"' />";
-                    links_holder += "<br /><a href='#' class='open-url' rel='"+ pjk.projinks[i].links[j] +"'>Open</a> ";
-                    links_holder += "<a href='#' class='open-url-new-tab' rel='"+ pjk.projinks[i].links[j] +"'>New Tab</a> ";
-                    links_holder += "<a href='#' class='copy-url' rel='"+ pjk.projinks[i].links[j] +"'>Copy to Clipboard</a> ";
-                    links_holder += "<a href='#' class='remove-link' rel='"+ j +"'>Delete</a>";
-                    links_holder += "</li>";
+                    links_holder = append_pj_link(pjk,i,j);
                 }
             }
 
@@ -36,7 +28,7 @@ var show_plist = function(pjk){
                 "<li id='list-item"+ i +"'class='open-project' rel='"+ i +"'>"+
                     "<span class='expander'>+</span> " +
                     "<span class='ptitle'>" + lt[i] + "</span>" +
-                    " <a href='#'>edit</a>"+
+                    " <a href='#' class='add-url'>quick add</a>"+
                     "<ul style='display: none;' class='list-item-children'>" + links_holder + "</ul>" +
                 "</li>"
             );
@@ -63,6 +55,20 @@ var show_plist = function(pjk){
         // no projects should have a fall back
     }
 
+}
+
+var append_pj_link = function(pjk,i,j){
+    links_holder = "";
+    links_holder += "<li><span class='bigtext'>";
+    links_holder += pjk.projinks[i].links[j];
+    links_holder += "</span>";
+    links_holder += "<input type='hidden' value='"+ pjk.projinks[i].links[j] +"' />";
+    links_holder += "<br /><a href='#' class='open-url' rel='"+ pjk.projinks[i].links[j] +"'>Open</a> ";
+    links_holder += "<a href='#' class='open-url-new-tab' rel='"+ pjk.projinks[i].links[j] +"'>New Tab</a> ";
+    links_holder += "<a href='#' class='copy-url' rel='"+ pjk.projinks[i].links[j] +"'>Copy to Clipboard</a> ";
+    links_holder += "<a href='#' class='remove-link' rel='"+ j +"'>Delete</a>";
+    links_holder += "</li>";
+    return links_holder;
 }
 
 var current_tab_url = function(){

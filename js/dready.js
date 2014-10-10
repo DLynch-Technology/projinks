@@ -67,8 +67,28 @@ $(document).on("click", ".remove-link", function(){
 });
 
 $(document).on("click", ".add-url", function(){
+    var actID = $(this).parent().attr('rel');
+    pjk.active_project_id = actID;
     pjk.addURL();
-    buildProjectView(pjk);
+
+    var ele = $(this);
+    
+
+    links_holder = "";
+    links_holder += "<li><span class='bigtext'>";
+    links_holder += pjk.projinks[i].links[j];
+    links_holder += "</span>";
+    links_holder += "<input type='hidden' value='"+ pjk.projinks[i].links[j] +"' />";
+    links_holder += "<br /><a href='#' class='open-url' rel='"+ pjk.projinks[i].links[j] +"'>Open</a> ";
+    links_holder += "<a href='#' class='open-url-new-tab' rel='"+ pjk.projinks[i].links[j] +"'>New Tab</a> ";
+    links_holder += "<a href='#' class='copy-url' rel='"+ pjk.projinks[i].links[j] +"'>Copy to Clipboard</a> ";
+    links_holder += "<a href='#' class='remove-link' rel='"+ j +"'>Delete</a>";
+    links_holder += "</li>";
+
+    ele.find('ul.list-item-children').append(links_holder);
+
+    //function to append url
+    //buildProjectView(pjk);
 });
 $(document).on("click", ".reset-projink", function(){
     pjk.clearActiveLinks();
