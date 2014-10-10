@@ -15,6 +15,15 @@ ul,li,p,h1,h2,h3{
 	padding : 0px;
 	margin : 0px;
 }
+
+.header_icons{
+	display: inline;
+	background-color: #56565e;
+	border-radius: 10px;
+	color: #fff;
+	padding: 5px;
+}
+
 .general-padded-block{
 }
 .views{
@@ -23,7 +32,7 @@ ul,li,p,h1,h2,h3{
 
 /** header */
 .gray-back{
-	background-color : #b2afaf;
+	background-color : #1d1d1d;
 }
 header#topbar ul li{
 	display : inline-block;
@@ -33,6 +42,10 @@ header#topbar ul li:first-child{
 	margin-right: 2px;
 }
 .topnav-item{
+<<<<<<< HEAD
+=======
+	background-color: #fff;
+>>>>>>> b33cc56fd46617362651cec84f7a5bfd1fbdd30c
 	color: white;
 	padding: 1px 5px;
 	cursor: pointer;
