@@ -17,11 +17,29 @@ var show_plist = function(pjk){
         var ele = $('#prolist #projinks-listing ul');
         ele.html("");
         for ( var i = 0; i < lt.length; i++){
+            var links_holder = "";
+            if ( pjk.projinks[i].links.length > 0 ){
+                for( var j = 0; j < pjk.projinks[i].links.length; j++ ){
+                    links_holder += "<li><span class='bigtext'>";
+                    links_holder += pjk.projinks[i].links[j];
+                    links_holder += "</span>";
+                    links_holder += "<input type='hidden' value='"+ pjk.projinks[i].links[j] +"' />";
+                    links_holder += "<br /><a href='#' class='open-url' rel='"+ pjk.projinks[i].links[j] +"'>Open</a> ";
+                    links_holder += "<a href='#' class='open-url-new-tab' rel='"+ pjk.projinks[i].links[j] +"'>New Tab</a> ";
+                    links_holder += "<a href='#' class='copy-url' rel='"+ pjk.projinks[i].links[j] +"'>Copy to Clipboard</a> ";
+                    links_holder += "<a href='#' class='remove-link' rel='"+ j +"'>Delete</a>";
+                    links_holder += "</li>";
+                }
+            }
+
             ele.append(
-                "<li class='open-project' rel='"+ i +"'>"+
-                    lt[i] +
+                "<li id='list-item"+ i +"'class='open-project' rel='"+ i +"'>"+
+                    "<span class='expander'>+</span> " +
+                    "<span class='ptitle'>" + lt[i] + "</span>" +
+                    " <a href='#'>edit</a>"+
+                    "<ul style='display: none;' class='list-item-children'>" + links_holder + "</ul>" +
                 "</li>"
-                );
+            );
         }
         pjk.clean_recent_projects();
 
@@ -54,7 +72,7 @@ var current_tab_url = function(){
     });
 }
 
-
+// function to be deprecated
 var buildProjectView = function(pjk){
     vw = $('#plist');
     vw.html('');
@@ -73,6 +91,26 @@ var buildProjectView = function(pjk){
                 "</li>"
                 );
         }
+    }
+}
+
+var toggle_projink = function(ele){
+    var expander = ele.find('span.expander');
+    switch_expander(expander);
+
+    var subele = ele.find('ul.list-item-children');
+    if ( subele.is(':visible') ){
+        subele.hide();
+    } else {
+        subele.show();
+    }
+}
+
+var switch_expander = function(ele){
+    if ( ele.text() == "+"){
+        ele.text("-");
+    } else {
+        ele.text("+");
     }
 }
 
