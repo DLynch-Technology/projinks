@@ -17,11 +17,7 @@ ul,li,p,h1,h2,h3{
 }
 
 .header_icons{
-	display: inline;
-	background-color: #56565e;
-	border-radius: 10px;
-	color: #fff;
-	padding: 5px;
+	
 }
 
 .general-padded-block{
@@ -47,14 +43,20 @@ header#topbar ul li:first-child{
 .logo{
 	float: left;
 	margin-left: 5px;
-	margin-top: 5px
+	margin-top: 5px;
+	margin-bottom:10px;
 }
 .header_icons{
 	float: left;
 	padding: 5px;
-	margin: 15px 0 5px 100px;
+	margin: 15px 0 5px 150px;
 	background-color: #56565e;
 	border-radius: 10px;
+	margin-bottom:10px;
+	display: inline;
+	color: #fff;
+	font-size: 16px;
+	padding: 5px;
 }
 
 .header_icons li span{
@@ -78,6 +80,12 @@ header#topbar ul li:first-child{
 .subscreen-overflow{
 	height: 190px;
 	overflow: auto;
+}
+
+#projinks-listing{
+	display: block;
+	overflow: auto;
+	height: 300px;
 }
 
 #projinks-listing ul li{
@@ -127,10 +135,25 @@ header#topbar ul li:first-child{
 	margin: 25px 0px;
 }
 /** Footer */
+
+.footer_container{
+	background-color: #fff;
+	position: fixed;
+	bottom: 0 ;
+	clear: both;
+	width: 100%;
+	height: 50px;
+
+}
 .footer{
+	border-top: solid 1px #000;
 	height:40px;
 	background-color:#56565e;
 	margin: 5px;
+	padding-right: 35px;
+	position: fixed;
+	bottom: 0 ;
+	clear: both;
 }
 
 .footer input {
@@ -140,11 +163,25 @@ header#topbar ul li:first-child{
 	border-bottom: solid 2px #fff;
 	margin-left: 260px;
 	margin-top: 10px;
+	color:#fff;
+	padding:2px;
+}
+.footer input{
+	background-color:#56565e;
+	float: left;
+	border: solid 0px;
+	border-bottom: solid 2px #fff;
+	margin-left: 300px;
+	margin-top: 10px;
+	color:#fff;
+	padding:2px;
 }
 
-.footer span{
+.footer textarea:focus, input:focus{
+    outline: 0;
+}
+.footer i{
 	float: left;
-	font-family: arial;
 	margin-top:12px;
 	color:#fff;
 }
