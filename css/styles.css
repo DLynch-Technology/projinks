@@ -149,6 +149,9 @@ footer input{
 	padding:2px;
 }
 
+.list-item-children{
+	background-color: #E6E6FA;
+}
 .list-item-children li{
 	margin-left: 25px;
 }

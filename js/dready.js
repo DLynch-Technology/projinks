@@ -63,7 +63,8 @@ $(document).on("click", ".copy-url", function(){
 $(document).on("click", ".remove-link", function(){
     var ele = $(this);
     pjk.removeLinkFromActive(ele.attr('rel'));
-    buildProjectView(pjk);
+    removeElement(ele.parent());
+    //buildProjectView(pjk);
 });
 
 $(document).on("click", ".add-url", function(){

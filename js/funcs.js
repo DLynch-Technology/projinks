@@ -20,7 +20,7 @@ var show_plist = function(pjk){
             var links_holder = "";
             if ( pjk.projinks[i].links.length > 0 ){
                 for( var j = 0; j < pjk.projinks[i].links.length; j++ ){
-                    links_holder = append_pj_link(pjk,i,j);
+                    links_holder += append_pj_link(pjk,i,j);
                 }
             }
 
@@ -130,4 +130,8 @@ var load_splash = function(pjk){
 var map_rel_to_add_button = function(id){
     var button = $('#footer-add-url');
     button.attr('rel',id);
+}
+
+var removeElement = function(ele){
+    ele.remove();
 }
