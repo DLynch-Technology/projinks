@@ -67,12 +67,14 @@ $(document).on("click", ".remove-link", function(){
 });
 
 $(document).on("click", ".add-url", function(){
+    var ele = $(this).parent();
     var actID = $(this).parent().attr('rel');
+    console.log(actID);
     pjk.active_project_id = actID;
     pjk.addURL();
 
-    var ele = $(this);
-    
+    var i = actID;
+    var j = pjk.projinks[i].links.length - 1;
 
     links_holder = "";
     links_holder += "<li><span class='bigtext'>";
