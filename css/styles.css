@@ -1,6 +1,6 @@
 body{
 	width : 600px;
-	height : 300px;
+	height : 400px;
 	padding : 0px;
 	margin : 0px;
 	color : #262626;
@@ -62,11 +62,11 @@ header#topbar ul li:first-child{
 
 /** Layout */
 #layout{
-	padding-top: 20px;
-	height: 260px;
+	height: 300px;
+	overflow: auto;
 }
 .fill-screen{
-	height: 260px;
+	height: 300px;
 }
 .subscreen-header{
 	height: 70px;
@@ -76,13 +76,6 @@ header#topbar ul li:first-child{
 	height: 190px;
 	overflow: auto;
 }
-
-#projinks-listing{
-	display: block;
-	overflow: auto;
-	height: 300px;
-}
-
 #projinks-listing ul li{
 	color: #68228b;
 	background-color: #e7dbed;
@@ -133,10 +126,10 @@ header#topbar ul li:first-child{
 
 
 footer{
-	border-top: solid 1px #000;
+	display: block;
+	border-top: solid 1px #CCC;
 	height:40px;
-	background-color:#56565e;
-	position: fixed;
+	/*background-color:#56565e;*/
 	width: 100%;
 	text-align: right;
 }
