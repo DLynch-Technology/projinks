@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "projinks",
-  "description": "Links for my project == projinks",
+  "description": "Store your links better than bookmarks.",
   "version": "0.1.0",
   "permissions":[
   	"tabs",
