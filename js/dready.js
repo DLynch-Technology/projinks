@@ -68,8 +68,8 @@ $(document).on("click", ".remove-link", function(){
 });
 
 $(document).on("click", ".add-url", function(){
-    var ele = $(this).parent();
-    var actID = $(this).parent().attr('rel');
+    var ele = $(this).parent().parent();
+    var actID = $(this).parent().parent().attr('rel');
     console.log(actID);
     pjk.active_project_id = actID;
     pjk.addURL();

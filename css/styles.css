@@ -168,3 +168,11 @@ footer input{
 }
 
 
+nav.pj-nav{
+	display: inline-block;
+	margin-left: 12px;
+}
+nav.pj-nav a{
+	margin-right: 8px;
+	padding: 2px;
+}

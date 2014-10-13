@@ -28,7 +28,7 @@ var show_plist = function(pjk){
                 "<li id='list-item"+ i +"'class='open-project pj-parent' rel='"+ i +"'>"+
                     "<span class='expander'>+</span> " +
                     "<span class='ptitle'>" + lt[i] + "</span>" +
-                    " <a href='#' class='add-url'>quick add</a>"+
+                    // " <nav class='pj-nav' style='display: inline-block;'><a href='#' class='add-url'>quick add</a></nav>"+
                     "<ul style='display: none;' class='list-item-children'>" + links_holder + "</ul>" +
                 "</li>"
             );
@@ -103,10 +103,18 @@ var toggle_projink = function(ele){
     var expander = ele.find('span.expander');
     switch_expander(expander);
 
+
+
     var subele = ele.find('ul.list-item-children');
     if ( subele.is(':visible') ){
+        removeElement(ele.find('nav'));
         subele.hide();
     } else {
+        var nav_html = "<nav class='pj-nav' style='display: inline-block;'>";
+        nav_html += "<a href='#' class='add-url' alt='Add link to Projink' title='Add link to Projink'><i class='fa fa-chain'></i></a>";
+        nav_html += "<a href='#' class='remove-projink' alt='Remove Projink' title='Remove Projink'><i class='fa fa-trash'></i></a>";
+        nav_html += "</nav>";
+        ele.find('.ptitle').after(nav_html);
         subele.show();
     }
 }
