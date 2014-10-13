@@ -5,7 +5,8 @@ body{
 	margin : 0px;
 	color : #262626;
 	font-size : .8em;
-	background-color: #EEE;
+	background-color: #efebf1;
+	font-family: 'Open Sans', sans-serif;
 }
 
 /** Global */
@@ -76,12 +77,36 @@ header#topbar ul li:first-child{
 	height: 190px;
 	overflow: auto;
 }
+
 #projinks-listing ul li{
 	color: #68228b;
 	background-color: #e7dbed;
 	padding: 4px;
-	cursor: pointer;
 	margin-bottom: 1px;
+
+}
+#projinks-listing ul li.pj-parent{
+	font-size: 1em;
+	font-weight: 600;
+	cursor: pointer;
+}
+.list-item-children{
+	/*background-color: #E6E6FA;*/
+	background-color: #FFF;
+	font-size: .9em;
+	font-weight: normal;
+}
+
+.list-item-children li{
+	margin-left: 35px;
+}
+.list-item-children li a{
+	margin-left: 12px;
+
+}
+.list-item-children i{
+	font-size: 1.5em;
+	color: #56565e;
 }
 
 
@@ -142,9 +167,4 @@ footer input{
 	padding:2px;
 }
 
-.list-item-children{
-	background-color: #E6E6FA;
-}
-.list-item-children li{
-	margin-left: 25px;
-}
+
