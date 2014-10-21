@@ -176,3 +176,17 @@ nav.pj-nav a{
 	margin-right: 8px;
 	padding: 2px;
 }
+
+#live-url {
+	z-index: -1;
+	
+}
+#input-container:{
+	background-color:#56565e;
+	border: 0px;
+	border-bottom: solid 2px #fff;
+	color:#fff;
+	padding:2px;
+	z-index: 1;
+	position: absolute;
+}

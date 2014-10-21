@@ -60,6 +60,7 @@ $(document).on("click", ".copy-url", function(){
     document.execCommand('Copy');
 });
 
+
 $(document).on("click", ".remove-link", function(){
     var ele = $(this);
     pjk.removeLinkFromActive(ele.attr('rel'));

@@ -65,6 +65,7 @@ var append_pj_link = function(pjk,i,j){
     links_holder += "<input type='hidden' value='"+ pjk.projinks[i].links[j] +"' />";
     links_holder += "<br /><br /><a href='#' class='open-url' rel='"+ pjk.projinks[i].links[j] +"' alt='Open in current tab' title='Open in current tab'><i class='fa fa-reply'></i></a> ";
     links_holder += "<a href='#' class='open-url-new-tab' rel='"+ pjk.projinks[i].links[j] +"' alt='Open in new tab' title='Open in new tab'><i class='fa fa-reply-all'></i></a> ";
+    links_holder += "<a href='#' class='copy-url' rel='"+ pjk.projinks[i].links[j] +"' alt='Copy link to clipboard' title='Copy link to clipboard'><i class='fa fa-files-o'></i></a> "; 
     links_holder += "<a href='#' class='remove-link' rel='"+ j +"' alt='remove link' title='remove link'><i class='fa fa-remove'></i></a>";
     links_holder += "</li>";
     return links_holder;
