@@ -59,7 +59,7 @@ var show_plist = function(pjk){
 
 var append_pj_link = function(pjk,i,j){
     links_holder = "";
-    links_holder += "<li><span class='bigtext'>";
+    links_holder += "<li><span class='bigtext open-url' rel='"+ pjk.projinks[i].links[j] +"'>";
     links_holder += pjk.projinks[i].links[j];
     links_holder += "</span>";
     links_holder += "<input type='hidden' value='"+ pjk.projinks[i].links[j] +"' />";
@@ -86,7 +86,7 @@ var buildProjectView = function(pjk){
     if ( pjk.projinks[pjk.active_project_id].links.length > 0 ){
         for( var i = 0; i < pjk.projinks[pjk.active_project_id].links.length; i++ ){
             vw.append( 
-                "<li><span class='bigtext'>"+
+                "<li><span class='bigtext open-url' rel='"+ pjk.projinks[pjk.active_project_id].links[i] +"'>"+
                     pjk.projinks[pjk.active_project_id].links[i] + 
                     "</span>"+
                     "<input type='hidden' value='"+ pjk.projinks[pjk.active_project_id].links[i] +"' />"+
