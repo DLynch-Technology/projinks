@@ -159,12 +159,16 @@ footer{
 	text-align: right;
 }
 
-footer input{
-	background-color:#56565e;
-	border: 0px;
-	border-bottom: solid 2px #fff;
-	color:#fff;
-	padding:2px;
+#footer-atop{
+	z-index: 1000;
+	position: fixed;
+	bottom: 0px;
+	height: 40px;
+	display: block;
+	border-top: solid 1px #CCC;
+	background-color: #efebf1;
+	width: 100%;
+	text-align: right;
 }
 
 
@@ -177,16 +181,3 @@ nav.pj-nav a{
 	padding: 2px;
 }
 
-#live-url {
-	z-index: -1;
-	
-}
-#input-container:{
-	background-color:#56565e;
-	border: 0px;
-	border-bottom: solid 2px #fff;
-	color:#fff;
-	padding:2px;
-	z-index: 1;
-	position: absolute;
-}
