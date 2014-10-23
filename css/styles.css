@@ -80,9 +80,10 @@ header#topbar ul li:first-child{
 
 #projinks-listing ul li{
 	color: #68228b;
-	background-color: #e7dbed;
+	/*background-color: #e7dbed;*/
 	padding: 4px;
 	margin-bottom: 2px;
+	border-bottom: 1px solid #e7dbed;
 
 }
 #projinks-listing ul li.pj-parent{
@@ -107,11 +108,11 @@ header#topbar ul li:first-child{
 .list-item-children li{
 	margin-left: 35px;
 	border-left: 2px solid #FFF;
-	border-bottom: 1px solid #FFF;
+	/*border-bottom: 1px solid #FFF;*/
 }
 .list-item-children li:hover{
-	border-bottom: 1px solid #68228b;
-	border-left: 1px solid #68228b;
+	/*border-bottom: 2px solid #68228b;*/
+	border-left: 4px solid #68228b;
 	background-color: #D3BEDD;
 }
 
