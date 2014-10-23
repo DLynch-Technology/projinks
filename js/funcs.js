@@ -59,7 +59,7 @@ var show_plist = function(pjk){
 
 var append_pj_link = function(pjk,i,j){
     links_holder = "";
-    links_holder += "<li><span class='bigtext open-url' rel='"+ pjk.projinks[i].links[j] +"'>";
+    links_holder += "<li><span class='bigtext open-url-new-tab' rel='"+ pjk.projinks[i].links[j] +"'>";
     links_holder += pjk.projinks[i].links[j];
     links_holder += "</span>";
     links_holder += "<input type='hidden' value='"+ pjk.projinks[i].links[j] +"' />";
