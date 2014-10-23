@@ -88,18 +88,31 @@ header#topbar ul li:first-child{
 #projinks-listing ul li.pj-parent{
 	font-size: 1em;
 	font-weight: 600;
+}
+.par-cursor{
 	cursor: pointer;
+	padding: 3px
+}
+#projinks-listing ul li.pj-parent a.par-icons i{
+	color: #DC143C;
 }
 .list-item-children{
 	/*background-color: #E6E6FA;*/
-	background-color: #FFF;
+	/*background-color: #FFF;*/
 	font-size: .9em;
 	font-weight: normal;
 }
 
 .list-item-children li{
 	margin-left: 35px;
+	border-left: 2px solid #FFF;
+	border-bottom: 1px solid #FFF;
 }
+.list-item-children li:hover{
+	border-bottom: 1px solid #68228b;
+	border-left: 1px solid #68228b;
+}
+
 .list-item-children li a{
 	margin-left: 12px;
 

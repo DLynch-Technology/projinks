@@ -11,8 +11,11 @@ $(document).on("click", "#pjk-action-cp", function(){
 });
 
 $(document).on("click", ".remove-projink",function() {
+    
     pjk.removeCollection(pjk.active_project_id);
-    $('#pjk-action-pl').trigger("click");
+
+    var ele = $(this);
+    removeElement(ele.parent().parent());
 
 });
 

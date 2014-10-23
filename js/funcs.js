@@ -26,8 +26,8 @@ var show_plist = function(pjk){
 
             ele.append(
                 "<li id='list-item"+ i +"'class='open-project pj-parent' rel='"+ i +"'>"+
-                    "<span class='expander'>+</span> " +
-                    "<span class='ptitle'>" + lt[i] + "</span>" +
+                    "<span class='par-cursor expander'>+</span> " +
+                    "<span class='par-cursor ptitle'>" + lt[i] + "</span>" +
                     // " <nav class='pj-nav' style='display: inline-block;'><a href='#' class='add-url'>quick add</a></nav>"+
                     "<ul style='display: none;' class='list-item-children'>" + links_holder + "</ul>" +
                 "</li>"
@@ -112,8 +112,8 @@ var toggle_projink = function(ele){
         subele.hide();
     } else {
         var nav_html = "<nav class='pj-nav' style='display: inline-block;'>";
-        nav_html += "<a href='#' class='add-url' alt='Add link to Projink' title='Add link to Projink'><i class='fa fa-chain'></i></a>";
-        nav_html += "<a href='#' class='remove-projink' alt='Remove Projink' title='Remove Projink'><i class='fa fa-trash'></i></a>";
+        nav_html += "<a href='#' class='par-icons add-url' alt='Add link to Projink' title='Add link to Projink'><i class='fa fa-chain'></i></a>";
+        nav_html += "<a href='#' class='par-icons remove-projink' alt='Remove Projink' title='Remove Projink'><i class='fa fa-trash'></i></a>";
         nav_html += "</nav>";
         ele.find('.ptitle').after(nav_html);
         subele.show();
