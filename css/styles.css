@@ -128,6 +128,7 @@ header#topbar ul li:first-child{
 	border-bottom: 1px solid #68228b;
 	border-left: 5px solid #68228b;
 	background-color: #D3BEDD;
+	font-weight: 600;
 }
 
 .list-item-children li a{
