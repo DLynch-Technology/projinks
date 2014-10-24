@@ -153,7 +153,28 @@ header#topbar ul li:first-child{
 }
 
 .secondary-back{
-	background-color: #E6E6FA;
+	color:#68228b;
+	background-color: #e7dbed;
+	font-weight: 900;
+}
+
+.secondary-back button{
+	background-color:#68228b;
+	color: #e7dbed;
+	font-weight: 900;
+	padding:10px 20px 10px 20px;
+	border:0px;
+	border-radius: 2px;
+}
+
+.secondary-back button:hover{
+	background-color:#DC143C;
+}
+
+.secondary-back input{
+	border-color: #68228b;
+	box-shadow: 0px;
+	color:#303030;
 }
 
 #cp-view{
