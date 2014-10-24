@@ -152,3 +152,10 @@ var map_rel_to_add_button = function(id){
 var removeElement = function(ele){
     ele.remove();
 }
+var projinks_website = function(uri){
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        var tab = tabs[0];
+        var url = "http://projinks.com" + uri;
+        chrome.tabs.update(tab.id, {url: url});
+    });
+}

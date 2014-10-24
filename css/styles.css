@@ -40,6 +40,11 @@ header#topbar ul li:first-child{
 .logo{
 	float: left;
 }
+.logo img{
+	width: 80px;
+	cursor: pointer;
+}
+
 
 .header_icons{
 	float: left;

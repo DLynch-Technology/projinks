@@ -97,3 +97,7 @@ $(document).on("click", ".reset-projink", function(){
 $(document).on("click", "#btn-view-create-project", function(){
     create_project(pjk);
 });
+
+$(document).on("click", ".logo img", function(){
+    projinks_website("/");
+});
