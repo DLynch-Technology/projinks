@@ -83,7 +83,7 @@ header#topbar ul li:first-child{
 	/*background-color: #e7dbed;*/
 	padding: 4px;
 	margin-bottom: 2px;
-	border-bottom: 1px solid #e7dbed;
+	border-bottom: 2px solid #e7dbed;
 
 }
 #projinks-listing ul li.pj-parent{
