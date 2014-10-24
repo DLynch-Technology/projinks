@@ -90,9 +90,11 @@ header#topbar ul li:first-child{
 
 #projinks-listing ul li.pj-parent{
 	color: #68228b;
-	border-top: 1px solid #e7dbed;
-	border-bottom: 1px solid #e7dbed;
-
+	border-top: 2px solid #e7dbed;
+	/*border-bottom: 2px solid #e7dbed;*/
+}
+#projinks-listing ul li.pj-parent:last-child{
+	border-bottom: 2px solid #e7dbed;
 }
 #projinks-listing ul li.pj-parent{
 	font-size: 1em;
