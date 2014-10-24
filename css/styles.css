@@ -44,14 +44,14 @@ header#topbar ul li:first-child{
 .header_icons{
 	float: left;
 	padding: 5px;
-	margin: 15px 0 5px 150px;
+	margin: 15px 0 10px 185px;
 	background-color: #56565e;
 	border-radius: 10px;
-	margin-bottom:10px;
+	margin-bottom:15px;
 	display: inline;
 	color: #fff;
-	font-size: 16px;
-	padding: 5px;
+	font-size: 20px;
+	padding: 10px;
 }
 
 .header_icons li span{
@@ -175,6 +175,7 @@ header#topbar ul li:first-child{
 	border-color: #68228b;
 	box-shadow: 0px;
 	color:#303030;
+	border-radius: 2px;
 }
 
 #cp-view{
