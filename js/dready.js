@@ -85,9 +85,7 @@ $(document).on("click", ".add-url", function(){
     links_holder = append_pj_link(pjk,i,j);
 
     ele.find('ul.list-item-children').append(links_holder);
-
-    //function to append url
-    //buildProjectView(pjk);
+    pj_notify("link added");
 });
 $(document).on("click", ".reset-projink", function(){
     pjk.clearActiveLinks();

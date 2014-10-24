@@ -159,3 +159,10 @@ var projinks_website = function(uri){
         chrome.tabs.update(tab.id, {url: url});
     });
 }
+
+var pj_notify = function(mess){
+    var blk = $('#notify');
+    blk.fadeOut();
+    blk.text(mess);
+    blk.fadeIn(App.fadeIn).delay(1000).fadeOut(App.fadeOut);
+}
