@@ -2,7 +2,7 @@
 	<head>
 		<title>Projinks</title>
 
-		<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+		<link href="css/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="css/styles.css"/>
     	<script type="text/javascript" src="js/popup.js"></script>
     	<script type="text/javascript" src="js/jquery.js"></script>
@@ -18,7 +18,7 @@
 			<header id="topbar">
 
 				<div class="logo">
-					<img src="images/projinks_logo_128pjks.png" style="width: 80px" />
+					<img src="images/projinks_logo_128pjks.png" />
 				</div>
 				<div class = "header_icons">
 					<ul>
@@ -26,7 +26,7 @@
 							<i class="fa fa-file-o" alt="Create Projink" title="Create Projink"></i>
 						</li>
 						<li class="topnav-item" id="pjk-action-pl">
-							<i class="fa fa-list" alt="Projinks Help" title="Projinks Help"></i>
+							<i class="fa fa-list" alt="View|Collapse Projinks" title="View|Collapse Projinks"></i>
 						</li>
 						<!--
 						<li class="topnav-item">
@@ -42,10 +42,13 @@
 		<section id="layout">
 			<div id="view-create-project" class="views fill-screen secondary-back">
 				<div id="cp-view">
-					<label>Projink Name
-						<input type="text" name="pname" id="pname" placeholder="a-z0-9\s" />
-					</label>
-					<button id="btn-view-create-project">+Create</button>
+					<p class="pad-text-bottom help-text slim-width">
+						Projinks enables you to pack URLs into one shareable link called (you guessed it) Projinks.
+					</p>
+
+					<input type="text" name="pname" id="pname" placeholder="new projink name" />
+
+					<button id="btn-view-create-project">Start</button>
 				</div>
 			</div>
 			<div id="prolist" class="views">
@@ -66,13 +69,14 @@
 			</div>
 		</section>
 		<footer>
-			<!--
-			<input type="text" name="search" id="search-projinks" placeholder="search" />
-			<i class="fa fa-search"></i>
-			-->
+			<!-- Can Use footer through footer-atop -->
+			<input id="live-url" value="" />
 		</footer>
+		<div id="footer-atop">
+			<div style="display:none;" id="notify"></div>
+		</div>
 
-		<input type="hidden" id="live-url" value="" />
+		
 	</body>
 </html>
 
