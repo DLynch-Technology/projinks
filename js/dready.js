@@ -16,7 +16,7 @@ $(document).on("click", ".remove-projink",function() {
 
     var ele = $(this);
     removeElement(ele.parent().parent());
-
+    pj_notify("projink removed");
 });
 
 $(document).on("click", ".open-project span.ptitle, .open-project span.expander", function(){
@@ -27,19 +27,6 @@ $(document).on("click", ".open-project span.ptitle, .open-project span.expander"
 
     toggle_projink(ele);
 
-    
-    //map_rel_to_add_button(pjk.active_project_id);
-    
-
-    //$('.views').css('display', 'none');
-    //var vw = $('#projink-view');
-    //pjk.addToRecent(pjk.active_project_id);
-    //pjk.saveStorage();  // saving all -- can probably just save one here investigate further
-
-    
-    //vw.find('h2').text(pjk.collections[pjk.active_project_id]);
-    //buildProjectView(pjk);
-    //vw.show();
 });
 /* double clicking list item should do something someday */
 $(document).on("click", ".open-url-new-tab", function(){
@@ -61,6 +48,7 @@ $(document).on("click", ".copy-url", function(){
     live_url.focus();
     live_url.select();
     document.execCommand('Copy');
+    pj_notify("link copied to clipboard");
 });
 
 
@@ -68,7 +56,7 @@ $(document).on("click", ".remove-link", function(){
     var ele = $(this);
     pjk.removeLinkFromActive(ele.attr('rel'));
     removeElement(ele.parent());
-    //buildProjectView(pjk);
+    pj_notify("link removed");
 });
 
 $(document).on("click", ".add-url", function(){
@@ -85,9 +73,7 @@ $(document).on("click", ".add-url", function(){
     links_holder = append_pj_link(pjk,i,j);
 
     ele.find('ul.list-item-children').append(links_holder);
-
-    //function to append url
-    //buildProjectView(pjk);
+    pj_notify("link added");
 });
 $(document).on("click", ".reset-projink", function(){
     pjk.clearActiveLinks();
@@ -96,4 +82,8 @@ $(document).on("click", ".reset-projink", function(){
 
 $(document).on("click", "#btn-view-create-project", function(){
     create_project(pjk);
+});
+
+$(document).on("click", ".logo img", function(){
+    projinks_website("/");
 });

@@ -58,17 +58,26 @@ var show_plist = function(pjk){
 }
 
 var append_pj_link = function(pjk,i,j){
+    var dis_url = pjk.projinks[i].links[j];
+    var dis_url_short = trunc_url(dis_url, 75);
     links_holder = "";
-    links_holder += "<li><span class='bigtext open-url-new-tab' rel='"+ pjk.projinks[i].links[j] +"'>";
-    links_holder += pjk.projinks[i].links[j];
+    links_holder += "<li><span class='bigtext open-url-new-tab' rel='"+ dis_url +"'>";
+    links_holder += dis_url_short;
     links_holder += "</span>";
-    links_holder += "<input type='hidden' value='"+ pjk.projinks[i].links[j] +"' />";
-    links_holder += "<br /><br /><a href='#' class='open-url' rel='"+ pjk.projinks[i].links[j] +"' alt='Open in current tab' title='Open in current tab'><i class='fa fa-reply'></i></a> ";
-    links_holder += "<a href='#' class='open-url-new-tab' rel='"+ pjk.projinks[i].links[j] +"' alt='Open in new tab' title='Open in new tab'><i class='fa fa-reply-all'></i></a> ";
-    links_holder += "<a href='#' class='copy-url' rel='"+ pjk.projinks[i].links[j] +"' alt='Copy link to clipboard' title='Copy link to clipboard'><i class='fa fa-files-o'></i></a> "; 
+    links_holder += "<input type='hidden' value='"+ dis_url +"' />";
+    links_holder += "<br /><br /><a href='#' class='open-url' rel='"+ dis_url +"' alt='Open in current tab' title='Open in current tab'><i class='fa fa-reply'></i></a> ";
+    links_holder += "<a href='#' class='open-url-new-tab' rel='"+ dis_url +"' alt='Open in new tab' title='Open in new tab'><i class='fa fa-reply-all'></i></a> ";
+    links_holder += "<a href='#' class='copy-url' rel='"+ dis_url +"' alt='Copy link to clipboard' title='Copy link to clipboard'><i class='fa fa-files-o'></i></a> "; 
     links_holder += "<a href='#' class='remove-link' rel='"+ j +"' alt='remove link' title='remove link'><i class='fa fa-remove'></i></a>";
     links_holder += "</li>";
     return links_holder;
+}
+
+var trunc_url = function(str, len){
+    if ( str.length <= len) return str;
+
+    var sstr = str.substring(0, len);
+    return sstr + "...";
 }
 
 var current_tab_url = function(){
@@ -142,4 +151,18 @@ var map_rel_to_add_button = function(id){
 
 var removeElement = function(ele){
     ele.remove();
+}
+var projinks_website = function(uri){
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        var tab = tabs[0];
+        var url = "http://projinks.com" + uri;
+        chrome.tabs.update(tab.id, {url: url});
+    });
+}
+
+var pj_notify = function(mess){
+    var blk = $('#notify');
+    blk.fadeOut();
+    blk.text(mess);
+    blk.fadeIn(App.fadeIn).delay(1000).fadeOut(App.fadeOut);
 }

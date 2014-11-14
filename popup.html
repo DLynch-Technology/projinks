@@ -2,7 +2,7 @@
 	<head>
 		<title>Projinks</title>
 
-		<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+		<link href="css/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="css/styles.css"/>
     	<script type="text/javascript" src="js/popup.js"></script>
     	<script type="text/javascript" src="js/jquery.js"></script>
@@ -19,7 +19,7 @@
 			<header id="topbar">
 
 				<div class="logo">
-					<img src="images/projinks_logo_128pjks.png" style="width: 80px" />
+					<img src="images/projinks_logo_128pjks.png" />
 				</div>
 				<div class = "header_icons">
 					<ul>
@@ -43,10 +43,13 @@
 		<section id="layout">
 			<div id="view-create-project" class="views fill-screen secondary-back">
 				<div id="cp-view">
-					<label>Create a Projink
-						<input type="text" name="pname" id="pname" placeholder="new projink name" />
-					</label>
-					<button id="btn-view-create-project">+Create</button>
+					<p class="pad-text-bottom help-text slim-width">
+						Projinks enables you to pack URLs into one shareable link called (you guessed it) Projinks.
+					</p>
+
+					<input type="text" name="pname" id="pname" placeholder="new projink name" />
+
+					<button id="btn-view-create-project">Start</button>
 				</div>
 			</div>
 			<div id="prolist" class="views">
@@ -71,7 +74,7 @@
 			<input id="live-url" value="" />
 		</footer>
 		<div id="footer-atop">
-		
+			<div style="display:none;" id="notify"></div>
 		</div>
 
 		
