@@ -6,25 +6,40 @@ var PJK = function(){
     this.current_tab_url = "";
     this.active_project_id = "";
     this.recent_projinks = [];
+    this.settings = {
+        'sortby' : 0,
+    };
 
     this.init = function(){
+        this.upgrade();
         this.retrieveStorage(this);
+        
     }
+
+    this.setAppVersion = function(ver){
+        this.version = ver;
+    }
+
     this.packMeta = function(){
         return {
             'recent_projinks' : this.recent_projinks,
-            'active_project_id' : this.active_project_id
+            'active_project_id' : this.active_project_id,
+            'settings' : this.settings,
         }
     }
     this.unpackMeta = function(obj){
         this.recent_projinks = obj.recent_projinks;
         this.active_project_id = obj.active_project_id;
+        this.settings = obj.settings;
+
     }
     this.saveStorage = function(){
         var content_store = {};
         content_store.meta = this.packMeta();
         content_store.collections = this.collections;
         content_store.projinks = this.projinks;
+        content_store.app_version = this.version;
+
         chrome.storage.sync.set({'content_store' : content_store});
     }
     this.retrieveStorage = function(pjk){
@@ -33,6 +48,13 @@ var PJK = function(){
             pjk.setCollections(result.content_store.collections);
             pjk.setProjinks(result.content_store.projinks);
             pjk.unpackMeta(result.content_store.meta);
+
+            if (result.content_store.app_version == undefined){
+                result.content_store.app_version = 0;
+            }
+            pjk.setAppVersion(result.content_store.app_version);
+
+
         });
         return;
     }
@@ -125,6 +147,30 @@ var PJK = function(){
     this.clearActiveLinks = function(){
         this.projinks[this.active_project_id].links = [];
         this.saveStorage();
+    }
+
+    this.upgrade = function(){
+        db_version = 0;
+        tobj = {}
+        var save = false;
+        chrome.storage.sync.get('content_store', function(result){
+            if(jQuery.isEmptyObject(result)) return;
+            tobj = result.content_store;
+
+            if(tobj.app_version == "0.0.0.2"){
+                pjk.settings = {
+                    'sortby' : 0,
+                }
+                tobj.app_version = "0.0.0.3";
+            }
+            if(tobj.app_version == "0.0.0.3"){
+                
+            }
+            pjk.setAppVersion(App.version);
+            pjk.saveStorage();
+            
+        });
+
     }
 
     this.init();

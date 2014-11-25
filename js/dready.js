@@ -87,3 +87,7 @@ $(document).on("click", "#btn-view-create-project", function(){
 $(document).on("click", ".logo img", function(){
     projinks_website("/");
 });
+
+$(function () {
+    $('#prolist #projinks-listing ul').sortable();
+});
