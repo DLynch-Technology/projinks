@@ -151,23 +151,26 @@ var PJK = function(){
 
     this.upgrade = function(){
         db_version = 0;
-        tobj = {}
-        var save = false;
+        
         chrome.storage.sync.get('content_store', function(result){
             if(jQuery.isEmptyObject(result)) return;
             tobj = result.content_store;
+            var save = false;
 
             if(tobj.app_version == "0.0.0.2"){
                 pjk.settings = {
                     'sortby' : 0,
                 }
                 tobj.app_version = "0.0.0.3";
+                save = true;
             }
             if(tobj.app_version == "0.0.0.3"){
-                
+                save = true;
             }
-            pjk.setAppVersion(App.version);
-            pjk.saveStorage();
+            if ( save ){
+                pjk.setAppVersion(App.version);
+                pjk.saveStorage();
+            }
             
         });
 
