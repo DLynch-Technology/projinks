@@ -94,8 +94,10 @@ $(document).on("click", ".logo img", function(){
 
 
 $(function () {
-   $('#prolist #projinks-listing ul').sortable({
-     update: function( event, ui ) {
+   $('#prolist #projinks-listing ul').sortable({ containment: 'parent', 
+    tolerance: 'pointer', cursor: 'pointer',
+
+     update: function( ) {
        save_sort()
      }
 
