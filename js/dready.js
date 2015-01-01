@@ -92,6 +92,12 @@ $(document).on("click", ".logo img", function(){
     projinks_website("/");
 });
 
+
 $(function () {
-    $('#prolist #projinks-listing ul').sortable();
+   $('#prolist #projinks-listing ul').sortable({
+     update: function( event, ui ) {
+       save_sort()
+     }
+
+   });
 });
