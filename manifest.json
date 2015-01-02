@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
 
-  "name": "projinks",
+  "name": "Projinks (Beta)",
   "description": "Store multiple links in projinks",
   "version": "0.1.2",
   "permissions":[
