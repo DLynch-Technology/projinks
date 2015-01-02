@@ -165,8 +165,20 @@ var pj_notify = function(mess){
     blk.fadeIn(App.fadeIn).delay(1000).fadeOut(App.fadeOut);
 }
 
-var save_sort = function(pjk){
-    // $('#prolist #projinks-listing ul').appendTO(.saveStorage)
+var save_sort = function(){
+
+    //overwrite object with new order
+    var new_collections = Array();
+    var new_projinks = Array(); 
+    $('#projinks-listing ul.ui-sortable > li').each(function(){
+        var ele = $(this).attr('rel');
+
+        new_collections.push(pjk.collections[ele]);
+        new_projinks.push(pjk.projinks[ele]);
+    });
+
+    pjk.collections = new_collections;
+    pjk.projinks = new_projinks;
     pjk.saveStorage();
      
 }

@@ -94,12 +94,13 @@ $(document).on("click", ".logo img", function(){
 
 
 $(function () {
-   $('#prolist, #projinks-listing ul').sortable({ containment: 'parent', 
-    tolerance: 'pointer', cursor: 'pointer',
+    $('#projinks-listing ul').sortable({
+        containment: 'parent', 
+        tolerance: 'pointer', cursor: 'pointer',
 
-     update: function(event, ui ) {
-    save_sort()
-     }
+        update: function( event, ui ) {
+            save_sort();
+        }
 
-   });
+    });
 });
