@@ -60,8 +60,8 @@ $(document).on("click", ".remove-link", function(){
 });
 
 $(document).on("click", ".add-url", function(){
-    var ele = $(this).parent().parent();
-    var actID = $(this).parent().parent().attr('rel');
+    var ele = $(this).parent();
+    var actID = $(this).parent().attr('rel');
     console.log(actID);
     pjk.active_project_id = actID;
     pjk.addURL();
@@ -72,9 +72,13 @@ $(document).on("click", ".add-url", function(){
     links_holder = "";
     links_holder = append_pj_link(pjk,i,j);
 
+    if (ele.find('ul.list-item-children').is(':visible')){} else{
+        ele.find('ul.list-item-children').show();
+    }
     ele.find('ul.list-item-children').append(links_holder);
     pj_notify("link added");
 });
+
 $(document).on("click", ".reset-projink", function(){
     pjk.clearActiveLinks();
     buildProjectView(pjk);
@@ -86,4 +90,17 @@ $(document).on("click", "#btn-view-create-project", function(){
 
 $(document).on("click", ".logo img", function(){
     projinks_website("/");
+});
+
+
+$(function () {
+    $('#projinks-listing ul').sortable({
+        //containment: 'parent', 
+        tolerance: 'pointer', cursor: 'pointer',
+
+        update: function( event, ui ) {
+            save_sort();
+        }
+
+    });
 });
