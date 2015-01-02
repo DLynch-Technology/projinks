@@ -2,8 +2,8 @@
   "manifest_version": 2,
 
   "name": "projinks",
-  "description": "Store your links better than bookmarks.",
-  "version": "0.1.0",
+  "description": "Store multiple links in projinks",
+  "version": "0.1.2",
   "permissions":[
   	"tabs",
     "storage",
