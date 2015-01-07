@@ -104,3 +104,17 @@ $(function () {
 
     });
 });
+$(document).on("click", ".edit-projinks",function() {
+    
+//     pjk.removeCollection(pjk.active_project_id);
+// .change(function() 
+//     var ele = $(this);
+//     removeElement(ele.parent().parent());
+//     pj_notify("projink removed");
+//     });
+
+  
+    rename_projinks();  
+    pjk_notify("name updated");
+
+});

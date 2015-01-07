@@ -236,3 +236,11 @@ nav.pj-nav a{
 	padding: 2px;
 }
 
+#textbox{
+	width: 200px;
+	height: 100px;
+
+}
+input.mytext {
+    width: 300px;
+}

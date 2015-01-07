@@ -118,12 +118,13 @@ var toggle_projink = function(ele){
         //removeElement(ele.find('nav'));
         subele.hide();
     } else {
-        // var nav_html = "<nav class='pj-nav' style='display: inline-block;'>";
+        var nav_html = "<nav class='pj-nav' style='display: inline-block;'>";
+        nav_html += "<a href='#' class='par-icons edit-projinks' alt='edit projinks' title='edit projinks'> <i class='fa fa-pencil-square-o'></i></a>"
         // nav_html += "<a href='#' class='par-icons add-url' alt='Add link to Projink' title='Add link to Projink'><i class='fa fa-chain'></i></a>";
         // nav_html += "<a href='#' class='par-icons remove-projink' alt='Remove Projink' title='Remove Projink'><i class='fa fa-trash'></i></a>";
-        // nav_html += "</nav>";
-        // ele.find('.ptitle').after(nav_html);
-        subele.show();
+        nav_html += "</nav>";
+        ele.find('.ptitle').after(nav_html);
+        subele.show();  
     }
 }
 
@@ -165,20 +166,22 @@ var pj_notify = function(mess){
     blk.fadeIn(App.fadeIn).delay(1000).fadeOut(App.fadeOut);
 }
 
-var save_sort = function(){
-
-    //overwrite object with new order
-    var new_collections = Array();
-    var new_projinks = Array(); 
-    $('#projinks-listing ul.ui-sortable > li').each(function(){
-        var ele = $(this).attr('rel');
-
-        new_collections.push(pjk.collections[ele]);
-        new_projinks.push(pjk.projinks[ele]);
-    });
-
-    pjk.collections = new_collections;
-    pjk.projinks = new_projinks;
-    pjk.saveStorage();
+var save_sort = function(pjk){
+  
+    pjk.saveStorage(pjk);
      
+}
+var rename_projinks  = function(pjk){
+
+var newName = prompt("Would you like to change the name to? ");
+    
+    if (newName != null) {
+
+        pjk.saveStorage(pjk)
+
+
+
+
+
+}
 }
