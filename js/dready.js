@@ -95,7 +95,7 @@ $(document).on("click", ".logo img", function(){
 
 $(function () {
     $('#projinks-listing ul').sortable({
-        containment: 'parent', 
+        //containment: 'parent', 
         tolerance: 'pointer', cursor: 'pointer',
 
         update: function( event, ui ) {
