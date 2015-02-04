@@ -1,20 +1,5 @@
 
 
-var create_projink = function(){
-    var name = $('#pname').val();
-    if (!validate_projink_name(name)){
-        return false;
-    }
-
-    var try_push = pjk.pushToCollection(name);
-    if (try_push){
-        pjk.saveStorage();
-        transition_to_plist();
-        return;
-    }
-
-    
-}
 
 var show_plist = function(){
 
@@ -199,6 +184,27 @@ var buildEditView = function(pj_id){
 
 
 /** FORM ACTIONS **/
+var create_projink = function(){
+    var name = $('#pname').val();
+    if (!validate_projink_name(name)){
+        return false;
+    }
+
+
+    var obj = {
+        'name' : name,
+        'description' : '',
+    }
+    if ($('#pdescription').val() != '') obj.description = $('#pdescription').val();
+
+    var try_push = pjk.pushToCollection(obj);
+    if (try_push){
+        pjk.saveStorage();
+        transition_to_plist();
+        return;
+    }
+}
+
 var saveProjinkEdit = function(){
     var frm = $('#save-projink-form');
     var name = frm.find('input[name=name]').val();
@@ -215,6 +221,7 @@ var saveProjinkEdit = function(){
     pj_notify('saved');
     return false;
 }
+
 
 
 /** END FORM ACTIONS **/

@@ -65,13 +65,14 @@ var PJK = function(){
     this.setProjinks = function(pjinks){
         this.projinks = pjinks;
     }
-    this.pushToCollection = function(value){
+    this.pushToCollection = function(obj){
         // handle validation else where
 
-        this.collections.push(value);
+        this.collections.push(obj.name);
         this.projinks.push({
-            links : [],
-            created_date : Math.round(new Date().getTime() / 1000),
+            'links' : [],
+            'created_date' : Math.round(new Date().getTime() / 1000),
+            'description' : obj.description,
         });
         return true;
     }
