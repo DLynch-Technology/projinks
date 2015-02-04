@@ -1,17 +1,40 @@
+/** VIEW TRANSITIONS **/
+
 $(document).on("click", "#pjk-action-pl", function(){
-    $('.views').css('display','none');
-    $('#prolist').show();
     show_plist(pjk);
+    transition_view($('#prolist'));
 });
 
 $(document).on("click", "#pjk-action-cp", function(){
-    $('.views').css('display','none');
     $('#pname').val(pjk.nextGenericName());
-    $('#view-create-project').show();
+    transition_view($('#view-create-project'));
 });
 
+$(document).on('click', ".pjk-action-edit", function(){
+    var id = $(this).parent().attr('rel');
+    pjk.setActiveProjink(id);
+    buildEditView(id);
+    transition_view($('#view-project-edit'));
+});
+
+var transition_view = function(ele){
+    $('.views').hide();
+    ele.show();
+}
+
+/** END VIEW TRANSITIONS **/
+
+
+/** FORM SAVE CLICKS **/
+
+$(document).on('click', "#button-save-projink", function(){
+    saveProjinkEdit();
+});
+
+/** END FORM SAVE CLICKS **/
+
+
 $(document).on("click", ".remove-projink",function() {
-    
     pjk.removeCollection(pjk.active_project_id);
 
     var ele = $(this);
@@ -20,14 +43,12 @@ $(document).on("click", ".remove-projink",function() {
 });
 
 $(document).on("click", ".open-project span.ptitle, .open-project span.expander", function(){
-
     var ele = $(this).parent();
-
-    pjk.active_project_id = ele.attr('rel');
-
+    pjk.setActiveProjink(ele.attr('rel'));
     toggle_projink(ele);
-
 });
+
+
 /* double clicking list item should do something someday */
 $(document).on("click", ".open-url-new-tab", function(){
     var ele = $(this);
@@ -62,8 +83,10 @@ $(document).on("click", ".remove-link", function(){
 $(document).on("click", ".add-url", function(){
     var ele = $(this).parent();
     var actID = $(this).parent().attr('rel');
-    console.log(actID);
-    pjk.active_project_id = actID;
+    
+    //set active project
+    pjk.setActiveProjink(actID);
+
     pjk.addURL();
 
     var i = actID;

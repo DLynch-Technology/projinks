@@ -1,3 +1,38 @@
+/** VIEW BUILDERS **/
+var buildProjectView = function(pjk){
+    vw = $('#plist');
+    vw.html('');
+    if ( pjk.active_project_id == undefined ) return;
+    if ( pjk.projinks[pjk.active_project_id].links.length > 0 ){
+        for( var i = 0; i < pjk.projinks[pjk.active_project_id].links.length; i++ ){
+            vw.append( 
+                "<li><span class='bigtext open-url' rel='"+ pjk.projinks[pjk.active_project_id].links[i] +"'>"+
+                    pjk.projinks[pjk.active_project_id].links[i] + 
+                    "</span>"+
+                    "<input type='hidden' value='"+ pjk.projinks[pjk.active_project_id].links[i] +"' />"+
+                    "<br /><a href='#' class='open-url' rel='"+ pjk.projinks[pjk.active_project_id].links[i] +"'>Open</a> "+
+                    "<a href='#' class='open-url-new-tab' rel='"+ pjk.projinks[pjk.active_project_id].links[i] +"'>New Tab</a> "+
+                    "<a href='#' class='copy-url' rel='"+ pjk.projinks[pjk.active_project_id].links[i] +"'>Copy to Clipboard</a> "+
+                    "<a href='#' class='remove-link' rel='"+ i +"'>Delete</a>"+
+                "</li>"
+                );
+        }
+    }
+}
+
+var buildEditView = function(pj_id){
+    pjk.makeProjinkLive(pj_id);
+    var view = $('#view-project-edit');
+    //set name
+    view.find('h2').text(pjk.live_projink.name);
+    view.find('form input[name=name]').val(pjk.live_projink.name);
+}
+
+
+
+
+/** END VIEW BUILDERS **/
+
 var create_project = function(pjk){
 
     var try_push = pjk.pushToCollection($('#pname').val());
@@ -10,7 +45,7 @@ var create_project = function(pjk){
     
 }
 
-var show_plist = function(pjk){
+var show_plist = function(){
 
     if ( pjk.collection_count() > 0 ){
         var lt = pjk.collections;
@@ -27,6 +62,7 @@ var show_plist = function(pjk){
             ele.append(
                 "<li id='list-item"+ i +"'class='open-project pj-parent' rel='"+ i +"'>"+
                     "<a href='#' class='par-icons add-url' alt='Add link to Projink' title='Add link to Projink'><i class='fa fa-chain'></i></a>" +
+                    "<a href='#' class='pjk-action-edit par-icons' alt='Edit Projink' title='Edit Project'><i class='fa fa-cog'></i></a>" +
                     "<span class='par-cursor expander'>+</span> " +
                     "<span class='par-cursor ptitle'>" + lt[i] + "</span>" +
                     "<ul style='display: none;' class='list-item-children'>" + links_holder + "</ul>" +
@@ -78,35 +114,6 @@ var trunc_url = function(str, len){
 
     var sstr = str.substring(0, len);
     return sstr + "...";
-}
-
-var current_tab_url = function(){
-    if ( chrome.tabs == undefined) return;
-    chrome.tabs.query({ active: true, lastFocusedWindow: true }, function(tabs) {
-        $('#live-url').val(tabs[0].url);
-    });
-}
-
-// function to be deprecated
-var buildProjectView = function(pjk){
-    vw = $('#plist');
-    vw.html('');
-    if ( pjk.active_project_id == undefined ) return;
-    if ( pjk.projinks[pjk.active_project_id].links.length > 0 ){
-        for( var i = 0; i < pjk.projinks[pjk.active_project_id].links.length; i++ ){
-            vw.append( 
-                "<li><span class='bigtext open-url' rel='"+ pjk.projinks[pjk.active_project_id].links[i] +"'>"+
-                    pjk.projinks[pjk.active_project_id].links[i] + 
-                    "</span>"+
-                    "<input type='hidden' value='"+ pjk.projinks[pjk.active_project_id].links[i] +"' />"+
-                    "<br /><a href='#' class='open-url' rel='"+ pjk.projinks[pjk.active_project_id].links[i] +"'>Open</a> "+
-                    "<a href='#' class='open-url-new-tab' rel='"+ pjk.projinks[pjk.active_project_id].links[i] +"'>New Tab</a> "+
-                    "<a href='#' class='copy-url' rel='"+ pjk.projinks[pjk.active_project_id].links[i] +"'>Copy to Clipboard</a> "+
-                    "<a href='#' class='remove-link' rel='"+ i +"'>Delete</a>"+
-                "</li>"
-                );
-        }
-    }
 }
 
 var toggle_projink = function(ele){
@@ -182,3 +189,22 @@ var save_sort = function(){
     pjk.saveStorage();
      
 }
+
+
+/** FORM ACTIONS **/
+var saveProjinkEdit = function(){
+    var frm = $('#save-projink-form');
+    var name = frm.find('input[name=name]').val();
+    if(name.length < 3){
+        console.log('err');
+        pj_notify('Name must be 3 characters');
+        return false;
+    }
+    pjk.collections[pjk.live_projink.id] = name;
+    pjk.saveStorage();
+    pj_notify('saved');
+    return false;
+}
+
+
+/** END FORM ACTIONS **/

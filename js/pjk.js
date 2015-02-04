@@ -6,6 +6,7 @@ var PJK = function(){
     this.current_tab_url = "";
     this.active_project_id = "";
     this.recent_projinks = [];
+    this.live_projink = {};
     this.settings = {
         'sortby' : 0,
     };
@@ -147,6 +148,19 @@ var PJK = function(){
     this.clearActiveLinks = function(){
         this.projinks[this.active_project_id].links = [];
         this.saveStorage();
+    }
+
+    this.setActiveProjink = function(id){
+        if (id == undefined) return false;
+        this.active_project_id = id;
+    }
+
+    this.makeProjinkLive = function(id){
+        this.live_projink = {
+            'name' : this.collections[id],
+            'links' : this.projinks[id].links,
+            'id' : id,
+        };
     }
 
     this.upgrade = function(){

@@ -105,8 +105,13 @@ header#topbar ul li:first-child{
 	padding: 3px
 }
 
+#projinks-listing ul li.pj-parent a.par-icons{
+	margin: 2px;
+}
+
 #projinks-listing ul li.pj-parent a.par-icons i{
 	color: #68228b;
+	padding: 0px 2px;
 }
 
 #projinks-listing ul li.pj-parent a.par-icons i:hover{
