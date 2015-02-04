@@ -6,6 +6,7 @@ var PJK = function(){
     this.current_tab_url = "";
     this.active_project_id = "";
     this.recent_projinks = [];
+    this.live_projink = {};
     this.settings = {
         'sortby' : 0,
     };
@@ -64,27 +65,14 @@ var PJK = function(){
     this.setProjinks = function(pjinks){
         this.projinks = pjinks;
     }
-    this.pushToCollection = function(value){
-        var ck = 0;
-        var error_code = '';
-        if ( value.length < 1 ){
-            ck++; error_code = "STRING_EMPTY_ERROR"
-        }
-        if ( value.length > 25 ){
-            ck++; error_code = "STRING_LENGTH_ERROR"
-        }
-        if ( !value.match(/^[a-z0-9\s]+$/i) ){
-            ck++; error_code = "STRING_ALLOWED_CHARACTER_ERROR";
-        }
-        if ( ck > 0 ){
-            this.error_message = error_code;
-            return false;
-        }
+    this.pushToCollection = function(obj){
+        // handle validation else where
 
-        this.collections.push(value);
+        this.collections.push(obj.name);
         this.projinks.push({
-            links : [],
-            created_date : Math.round(new Date().getTime() / 1000),
+            'links' : [],
+            'created_date' : Math.round(new Date().getTime() / 1000),
+            'description' : obj.description,
         });
         return true;
     }
@@ -147,6 +135,23 @@ var PJK = function(){
     this.clearActiveLinks = function(){
         this.projinks[this.active_project_id].links = [];
         this.saveStorage();
+    }
+
+    this.setActiveProjink = function(id){
+        if (id == undefined) return false;
+        this.active_project_id = id;
+    }
+
+    this.makeProjinkLive = function(id){
+        this.live_projink = {
+            'name' : this.collections[id],
+            'links' : this.projinks[id].links,
+            'id' : id,
+            'description' : '',
+        };
+        if (this.projinks[id].description != undefined){
+            this.live_projink.description = this.projinks[id].description;
+        }
     }
 
     this.upgrade = function(){

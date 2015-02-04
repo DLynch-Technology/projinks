@@ -4,13 +4,7 @@
 
 		<link href="css/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="css/styles.css"/>
-    	<script type="text/javascript" src="js/popup.js"></script>
-    	<script type="text/javascript" src="js/jquery.js"></script>
-    	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
-    	<script type="text/javascript" src="js/pjk.js"></script>
-    	<script type="text/javascript" src="js/funcs.js"></script>
-    	<script type="text/javascript" src="js/dready.js"></script>
-    	<script type="text/javascript" src="js/myscripts.js"></script>
+    	
 
     	<link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
 	</head>
@@ -49,6 +43,11 @@
 
 					<input type="text" name="pname" id="pname" placeholder="new projink name" />
 
+					<br />
+
+					<textarea id="pdescription" placeholder="A description is always helpful."></textarea>
+					<br />
+
 					<button id="btn-view-create-project">Start</button>
 				</div>
 			</div>
@@ -57,16 +56,36 @@
 					<ul style="list-style-type:none;"></ul>
 				</section>
 			</div>
-			<div id="projink-view" class="views fill-screen">
-				<article class="subscreen-header">
-					<h2>Projink Name</h2>
-					<button class="add-url">Add Url</button>
-					<button class="reset-projink">Clear Links</button>
-					<button class="remove-projink">Delete PJk</button>
-				</article>
-				<section class="subscreen-overflow">
-					<ul id="plist"></ul>
+			<div id="view-project-edit" class="views fill-screen secondary-back">
+				<div class="form-padded-view">
+				<section>
+					<header>Projink Edit</header>
+
+					<form onsubmit="" id="save-projink-form">
+						<label>Name
+							<br/>
+							<input type="text" name="name" />
+						</label>
+						<br />
+						<label>
+							Description
+							<br />
+							<textarea name="description"></textarea>
+						</label>
+
+						<button type="button" id="button-save-projink">Save</button>
+
+					</form>
 				</section>
+
+				<hr />
+
+				<section>
+					<header>Delete Projink</header>
+					<button id="delete-projink">Delete This Projink</button>
+				</section>
+				</div>
+
 			</div>
 		</section>
 		<footer>
@@ -76,6 +95,15 @@
 		<div id="footer-atop">
 			<div style="display:none;" id="notify"></div>
 		</div>
+
+		<script type="text/javascript" src="js/popup.js"></script>
+    	<script type="text/javascript" src="js/jquery.js"></script>
+    	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    	<script type="text/javascript" src="js/pjk.js"></script>
+    	<script type="text/javascript" src="js/funcs.js"></script>
+    	<script type="text/javascript" src="js/validator.js"></script>
+    	<script type="text/javascript" src="js/dready.js"></script>
+    	<script type="text/javascript" src="js/myscripts.js"></script>
 
 		
 	</body>
