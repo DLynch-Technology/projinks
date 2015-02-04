@@ -66,21 +66,7 @@ var PJK = function(){
         this.projinks = pjinks;
     }
     this.pushToCollection = function(value){
-        var ck = 0;
-        var error_code = '';
-        if ( value.length < 1 ){
-            ck++; error_code = "STRING_EMPTY_ERROR"
-        }
-        if ( value.length > 25 ){
-            ck++; error_code = "STRING_LENGTH_ERROR"
-        }
-        if ( !value.match(/^[a-z0-9\s]+$/i) ){
-            ck++; error_code = "STRING_ALLOWED_CHARACTER_ERROR";
-        }
-        if ( ck > 0 ){
-            this.error_message = error_code;
-            return false;
-        }
+        // handle validation else where
 
         this.collections.push(value);
         this.projinks.push({
@@ -160,7 +146,11 @@ var PJK = function(){
             'name' : this.collections[id],
             'links' : this.projinks[id].links,
             'id' : id,
+            'description' : '',
         };
+        if (this.projinks[id].description != undefined){
+            this.live_projink.description = this.projinks[id].description;
+        }
     }
 
     this.upgrade = function(){

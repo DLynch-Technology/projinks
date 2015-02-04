@@ -55,12 +55,28 @@
 				<article class="subscreen-header">
 					<h2>Projink Name</h2>
 
-					<form onsubmit="" id="save-projink-form">
-						<label>Name
-							<input type="text" name="name" />
-						</label>
-						<button type="button" id="button-save-projink">Save</button>
-					</form>
+					<section>
+						<header>Info</header>
+
+						<form onsubmit="" id="save-projink-form">
+							<label>Name
+								<input type="text" name="name" />
+							</label>
+							<br />
+							<label>
+								Description
+								<textarea name="description"></textarea>
+							</label>
+							<div style="text-align:right;">
+								<button type="button" id="button-save-projink">Save</button>
+							</div>
+						</form>
+					</section>
+
+					<section>
+						<header>Delete Projink</header>
+						<button id="delete-projink">Delete This Projink</button>
+					</section>
 					
 				</article>
 				<section class="subscreen-overflow">
@@ -81,6 +97,7 @@
     	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
     	<script type="text/javascript" src="js/pjk.js"></script>
     	<script type="text/javascript" src="js/funcs.js"></script>
+    	<script type="text/javascript" src="js/validator.js"></script>
     	<script type="text/javascript" src="js/dready.js"></script>
     	<script type="text/javascript" src="js/myscripts.js"></script>
 

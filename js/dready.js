@@ -1,8 +1,7 @@
 /** VIEW TRANSITIONS **/
 
 $(document).on("click", "#pjk-action-pl", function(){
-    show_plist(pjk);
-    transition_view($('#prolist'));
+    transition_to_plist();
 });
 
 $(document).on("click", "#pjk-action-cp", function(){
@@ -21,26 +20,35 @@ var transition_view = function(ele){
     $('.views').hide();
     ele.show();
 }
+var transition_to_plist = function(){
+    show_plist();
+    transition_view($('#prolist'));
+}
+
 
 /** END VIEW TRANSITIONS **/
 
 
-/** FORM SAVE CLICKS **/
+/** FORM CLICKS **/
 
 $(document).on('click', "#button-save-projink", function(){
     saveProjinkEdit();
 });
 
-/** END FORM SAVE CLICKS **/
-
-
-$(document).on("click", ".remove-projink",function() {
+$(document).on("click", "#delete-projink",function() {
     pjk.removeCollection(pjk.active_project_id);
-
-    var ele = $(this);
-    removeElement(ele.parent().parent());
     pj_notify("projink removed");
+    transition_to_plist();
 });
+
+$(document).on("click", "#btn-view-create-project", function(){
+    create_projink();
+});
+
+/** END FORM  CLICKS **/
+
+
+
 
 $(document).on("click", ".open-project span.ptitle, .open-project span.expander", function(){
     var ele = $(this).parent();
@@ -107,9 +115,7 @@ $(document).on("click", ".reset-projink", function(){
     buildProjectView(pjk);
 });
 
-$(document).on("click", "#btn-view-create-project", function(){
-    create_project(pjk);
-});
+
 
 $(document).on("click", ".logo img", function(){
     projinks_website("/");

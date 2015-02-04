@@ -1,44 +1,15 @@
-/** VIEW BUILDERS **/
-var buildProjectView = function(pjk){
-    vw = $('#plist');
-    vw.html('');
-    if ( pjk.active_project_id == undefined ) return;
-    if ( pjk.projinks[pjk.active_project_id].links.length > 0 ){
-        for( var i = 0; i < pjk.projinks[pjk.active_project_id].links.length; i++ ){
-            vw.append( 
-                "<li><span class='bigtext open-url' rel='"+ pjk.projinks[pjk.active_project_id].links[i] +"'>"+
-                    pjk.projinks[pjk.active_project_id].links[i] + 
-                    "</span>"+
-                    "<input type='hidden' value='"+ pjk.projinks[pjk.active_project_id].links[i] +"' />"+
-                    "<br /><a href='#' class='open-url' rel='"+ pjk.projinks[pjk.active_project_id].links[i] +"'>Open</a> "+
-                    "<a href='#' class='open-url-new-tab' rel='"+ pjk.projinks[pjk.active_project_id].links[i] +"'>New Tab</a> "+
-                    "<a href='#' class='copy-url' rel='"+ pjk.projinks[pjk.active_project_id].links[i] +"'>Copy to Clipboard</a> "+
-                    "<a href='#' class='remove-link' rel='"+ i +"'>Delete</a>"+
-                "</li>"
-                );
-        }
+
+
+var create_projink = function(){
+    var name = $('#pname').val();
+    if (!validate_projink_name(name)){
+        return false;
     }
-}
 
-var buildEditView = function(pj_id){
-    pjk.makeProjinkLive(pj_id);
-    var view = $('#view-project-edit');
-    //set name
-    view.find('h2').text(pjk.live_projink.name);
-    view.find('form input[name=name]').val(pjk.live_projink.name);
-}
-
-
-
-
-/** END VIEW BUILDERS **/
-
-var create_project = function(pjk){
-
-    var try_push = pjk.pushToCollection($('#pname').val());
+    var try_push = pjk.pushToCollection(name);
     if (try_push){
         pjk.saveStorage();
-        $('#pjk-action-pl').trigger('click');
+        transition_to_plist();
         return;
     }
 
@@ -190,16 +161,55 @@ var save_sort = function(){
      
 }
 
+/** VIEW BUILDERS **/
+var buildProjectView = function(pjk){
+    vw = $('#plist');
+    vw.html('');
+    if ( pjk.active_project_id == undefined ) return;
+    if ( pjk.projinks[pjk.active_project_id].links.length > 0 ){
+        for( var i = 0; i < pjk.projinks[pjk.active_project_id].links.length; i++ ){
+            vw.append( 
+                "<li><span class='bigtext open-url' rel='"+ pjk.projinks[pjk.active_project_id].links[i] +"'>"+
+                    pjk.projinks[pjk.active_project_id].links[i] + 
+                    "</span>"+
+                    "<input type='hidden' value='"+ pjk.projinks[pjk.active_project_id].links[i] +"' />"+
+                    "<br /><a href='#' class='open-url' rel='"+ pjk.projinks[pjk.active_project_id].links[i] +"'>Open</a> "+
+                    "<a href='#' class='open-url-new-tab' rel='"+ pjk.projinks[pjk.active_project_id].links[i] +"'>New Tab</a> "+
+                    "<a href='#' class='copy-url' rel='"+ pjk.projinks[pjk.active_project_id].links[i] +"'>Copy to Clipboard</a> "+
+                    "<a href='#' class='remove-link' rel='"+ i +"'>Delete</a>"+
+                "</li>"
+                );
+        }
+    }
+}
+
+var buildEditView = function(pj_id){
+    pjk.makeProjinkLive(pj_id);
+    var view = $('#view-project-edit');
+    //set name
+    view.find('h2').text(pjk.live_projink.name);
+    view.find('form input[name=name]').val(pjk.live_projink.name);
+    
+    var desc = '';
+    if ( pjk.live_projink.description ) desc = pjk.live_projink.description;
+    view.find('form textarea').text(desc);
+}
+
+/** END VIEW BUILDERS **/
+
 
 /** FORM ACTIONS **/
 var saveProjinkEdit = function(){
     var frm = $('#save-projink-form');
     var name = frm.find('input[name=name]').val();
-    if(name.length < 3){
-        console.log('err');
-        pj_notify('Name must be 3 characters');
+    var description = frm.find('textarea').val();
+
+    if(!validate_projink_name(name)){
+        pj_notify('Please try again with an acceptable name.');
         return false;
     }
+
+    if (description != '') pjk.projinks[pjk.live_projink.id].description = description;
     pjk.collections[pjk.live_projink.id] = name;
     pjk.saveStorage();
     pj_notify('saved');
