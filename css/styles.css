@@ -1,3 +1,6 @@
+html{
+	height:400px;
+}
 body{
 	width : 600px;
 	height : 400px;
@@ -76,7 +79,7 @@ header#topbar ul li:first-child{
 }
 .subscreen-header{
 	height: 70px;
-	background-color: #E6E6FA;
+
 }
 .subscreen-overflow{
 	height: 190px;
@@ -196,7 +199,11 @@ header#topbar ul li:first-child{
 	text-align: center;
 	padding: 15px;
 }
-#cp-view input[type=text]{
+.form-padded-view{
+	text-align: center;
+	padding: 15px;
+}
+input[type=text], textarea{
 	background-color: #efebf1;
 	width: 500px;
 	padding: 15px 30px;
@@ -204,6 +211,9 @@ header#topbar ul li:first-child{
 	color: #68228b;
 	border: 1px solid #000;
 	margin-bottom: 25px;
+
+}
+textarea{
 
 }
 /** Footer */
@@ -241,3 +251,12 @@ nav.pj-nav a{
 	padding: 2px;
 }
 
+.views section header{
+	font-size: 1.1em;
+	font-weight: bold;
+	text-align: left;
+	display: block;
+	margin: 0px 0px 15px 0px;
+	padding:0px;
+	text-decoration: underline;
+}

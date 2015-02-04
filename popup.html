@@ -56,37 +56,36 @@
 					<ul style="list-style-type:none;"></ul>
 				</section>
 			</div>
-			<div id="view-project-edit" class="views fill-screen">
-				<article class="subscreen-header">
-					<h2>Projink Name</h2>
+			<div id="view-project-edit" class="views fill-screen secondary-back">
+				<div class="form-padded-view">
+				<section>
+					<header>Projink Edit</header>
 
-					<section>
-						<header>Info</header>
-
-						<form onsubmit="" id="save-projink-form">
-							<label>Name
-								<input type="text" name="name" />
-							</label>
+					<form onsubmit="" id="save-projink-form">
+						<label>Name
+							<br/>
+							<input type="text" name="name" />
+						</label>
+						<br />
+						<label>
+							Description
 							<br />
-							<label>
-								Description
-								<textarea name="description"></textarea>
-							</label>
-							<div style="text-align:right;">
-								<button type="button" id="button-save-projink">Save</button>
-							</div>
-						</form>
-					</section>
+							<textarea name="description"></textarea>
+						</label>
 
-					<section>
-						<header>Delete Projink</header>
-						<button id="delete-projink">Delete This Projink</button>
-					</section>
-					
-				</article>
-				<section class="subscreen-overflow">
-					<ul id="plist"></ul>
+						<button type="button" id="button-save-projink">Save</button>
+
+					</form>
 				</section>
+
+				<hr />
+
+				<section>
+					<header>Delete Projink</header>
+					<button id="delete-projink">Delete This Projink</button>
+				</section>
+				</div>
+
 			</div>
 		</section>
 		<footer>
