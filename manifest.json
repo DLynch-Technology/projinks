@@ -2,7 +2,8 @@
   "manifest_version": 2,
 
   "name": "Projinks (Beta)",
-  "description": "Store multiple links in projinks",
+  "short_name" : "Projinks",
+  "description": "Stash your browser links in Projinks.  Stash, Retrieve, Organize...",
   "version": "0.1.3",
   "permissions":[
   	"tabs",
