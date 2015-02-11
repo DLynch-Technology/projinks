@@ -55,30 +55,29 @@
 				</section>
 			</div>
 			<div id="view-project-edit" class="views fill-screen secondary-back">
+				<nav id="pjedit">
+					<i id="delete-projink" class="fa fa-trash" title="Delete Projink"></i>
+				</nav>
 				<div class="form-padded-view">
 				<section>
 <!-- 					<header>Projink Edit</header> -->
 
 					<form onsubmit="" id="save-projink-form">
-						<label>Name
-							<br/>
-							<input type="text" name="name" />
-						</label>
-						<br />
-						<label>
-							Description
-							<br />
-							<textarea name="description"></textarea>
-						</label>
+						<p class="input-label">Name<p>
+
+						<input type="text" name="name" />
+
+						<p class="input-label">Description</p>
+						<textarea name="description" placeholder="You can leave a description"></textarea>
 
 						<button type="button" id="button-save-projink">Save</button>
 
 					</form>
 				</section>
-
+<!-- 
 				<section>
 					<button id="delete-projink">Delete This Projink</button>
-				</section>
+				</section> -->
 				</div>
 
 			</div>

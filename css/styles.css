@@ -20,9 +20,21 @@ ul,li,p,h1,h2,h3{
 	padding : 0px;
 	margin : 0px;
 }
-i { color:#fff; }
+
 .views{ display : none; }
 
+
+#pjedit{
+	display: block;
+	text-align: right;
+	position: relative;
+	z-index: 1000;
+}
+#pjedit i{
+	font-size: 1.5em;
+	padding: 3px 15px 0px 0px;
+	cursor: pointer;
+}
 
 
 /** header */
@@ -219,6 +231,14 @@ header#topbar ul li:first-child{
 	text-align: center;
 	padding: 30px 30px 0px 30px;
 }
+.input-label{
+	display: block;
+	text-align: left;
+	margin-bottom: 12px;
+	font-size: 1.1em;
+	font-weight: 600;
+}
+
 input[type=text]{
 	/*background-color: #efebf1;*/
 	width: 500px;
@@ -232,7 +252,16 @@ input[type=text]{
     border-bottom: 2px solid #D7D7D7;
 }
 textarea{
-
+	width: 500px;
+	background-color: #EEE;
+	padding: 15px 30px;
+	height: 125px;
+	font-size: 1.5em;
+	color: #68228b;
+	margin-bottom: 25px;
+	border: 0;
+    outline: 0;
+    border-bottom: 2px solid #D7D7D7;
 }
 /** Footer */
 
