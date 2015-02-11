@@ -1,9 +1,22 @@
-
+var set_tab_live = function(id){
+    $('.topnav-item').each(function(){
+        var ele = $(this);
+        if(ele.attr('id') == id){
+            ele.addClass('nav-live');
+        } else {
+            if( ele.hasClass('nav-live')){
+                ele.removeClass('nav-live');
+            }
+        }
+    });
+}
 
 
 var show_plist = function(){
 
     if ( pjk.collection_count() > 0 ){
+        set_tab_live("pjk-action-pl");
+
         var lt = pjk.collections;
         var ele = $('#prolist #projinks-listing ul');
         ele.html("");
@@ -19,7 +32,7 @@ var show_plist = function(){
                 "<li id='list-item"+ i +"'class='open-project pj-parent' rel='"+ i +"'>"+
                     "<a href='#' class='par-icons add-url' alt='Add link to Projink' title='Add link to Projink'><i class='fa fa-chain'></i></a>" +
                     "<a href='#' class='pjk-action-edit par-icons' alt='Edit Projink' title='Edit Project'><i class='fa fa-cog'></i></a>" +
-                    "<span class='par-cursor expander'>+</span> " +
+                    "<a href='#' class='par-cursor expander par-icons'><i class='fa fa-folder'></i></a> " +
                     "<span class='par-cursor ptitle'>" + lt[i] + "</span>" +
                     "<ul style='display: none;' class='list-item-children'>" + links_holder + "</ul>" +
                 "</li>"
@@ -44,7 +57,7 @@ var show_plist = function(){
 
     } else {
 
-        // no projects should have a fall back
+        $("#btn-view-create-project").trigger();
     }
 
 }
@@ -57,9 +70,9 @@ var append_pj_link = function(pjk,i,j){
     links_holder += dis_url_short;
     links_holder += "</span>";
     links_holder += "<input type='hidden' value='"+ dis_url +"' />";
-    links_holder += "<br /><br /><a href='#' class='open-url' rel='"+ dis_url +"' alt='Open in current tab' title='Open in current tab'><i class='fa fa-reply'></i></a> ";
-    links_holder += "<a href='#' class='open-url-new-tab' rel='"+ dis_url +"' alt='Open in new tab' title='Open in new tab'><i class='fa fa-reply-all'></i></a> ";
-    links_holder += "<a href='#' class='copy-url' rel='"+ dis_url +"' alt='Copy link to clipboard' title='Copy link to clipboard'><i class='fa fa-files-o'></i></a> "; 
+    links_holder += "<br /><br /><a href='#' class='open-url' rel='"+ dis_url +"' alt='Open in current tab' title='Open in current tab'><i class='fa fa-toggle-up'></i></a> ";
+    links_holder += "<a href='#' class='open-url-new-tab' rel='"+ dis_url +"' alt='Open in new tab' title='Open in new tab'><i class='fa fa-toggle-right'></i></a> ";
+    links_holder += "<a href='#' class='copy-url' rel='"+ dis_url +"' alt='Copy link to clipboard' title='Copy link to clipboard'><i class='fa fa-clipboard'></i></a> "; 
     links_holder += "<a href='#' class='remove-link' rel='"+ j +"' alt='remove link' title='remove link'><i class='fa fa-remove'></i></a>";
     links_holder += "</li>";
     return links_holder;
@@ -73,7 +86,7 @@ var trunc_url = function(str, len){
 }
 
 var toggle_projink = function(ele){
-    var expander = ele.find('span.expander');
+    var expander = ele.find('a.expander i');
     switch_expander(expander);
 
     var subele = ele.find('ul.list-item-children');
@@ -91,11 +104,14 @@ var toggle_projink = function(ele){
 }
 
 var switch_expander = function(ele){
-    if ( ele.text() == "+"){
-        ele.text("-");
+    if ( ele.hasClass('fa-folder')){
+        ele.removeClass('fa-folder');
+        ele.addClass('fa-folder-open');
     } else {
-        ele.text("+");
+        ele.removeClass('fa-folder-open');
+        ele.addClass('fa-folder');
     }
+
 }
 
 var load_splash = function(pjk){
