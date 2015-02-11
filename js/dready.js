@@ -1,33 +1,62 @@
+/** VIEW TRANSITIONS **/
+
 $(document).on("click", "#pjk-action-pl", function(){
-    $('.views').css('display','none');
-    $('#prolist').show();
-    show_plist(pjk);
+    transition_to_plist();
 });
 
 $(document).on("click", "#pjk-action-cp", function(){
-    $('.views').css('display','none');
     $('#pname').val(pjk.nextGenericName());
-    $('#view-create-project').show();
+    transition_view($('#view-create-project'));
 });
 
-$(document).on("click", ".remove-projink",function() {
-    
+$(document).on('click', ".pjk-action-edit", function(){
+    var id = $(this).parent().attr('rel');
+    pjk.setActiveProjink(id);
+    buildEditView(id);
+    transition_view($('#view-project-edit'));
+});
+
+var transition_view = function(ele){
+    $('.views').hide();
+    ele.show();
+}
+var transition_to_plist = function(){
+    show_plist();
+    transition_view($('#prolist'));
+}
+
+
+/** END VIEW TRANSITIONS **/
+
+
+/** FORM CLICKS **/
+
+$(document).on('click', "#button-save-projink", function(){
+    saveProjinkEdit();
+});
+
+$(document).on("click", "#delete-projink",function() {
     pjk.removeCollection(pjk.active_project_id);
-
-    var ele = $(this);
-    removeElement(ele.parent().parent());
     pj_notify("projink removed");
+    transition_to_plist();
 });
+
+$(document).on("click", "#btn-view-create-project", function(){
+    create_projink();
+});
+
+/** END FORM  CLICKS **/
+
+
+
 
 $(document).on("click", ".open-project span.ptitle, .open-project span.expander", function(){
-
     var ele = $(this).parent();
-
-    pjk.active_project_id = ele.attr('rel');
-
+    pjk.setActiveProjink(ele.attr('rel'));
     toggle_projink(ele);
-
 });
+
+
 /* double clicking list item should do something someday */
 $(document).on("click", ".open-url-new-tab", function(){
     var ele = $(this);
@@ -62,8 +91,10 @@ $(document).on("click", ".remove-link", function(){
 $(document).on("click", ".add-url", function(){
     var ele = $(this).parent();
     var actID = $(this).parent().attr('rel');
-    console.log(actID);
-    pjk.active_project_id = actID;
+    
+    //set active project
+    pjk.setActiveProjink(actID);
+
     pjk.addURL();
 
     var i = actID;
@@ -84,9 +115,7 @@ $(document).on("click", ".reset-projink", function(){
     buildProjectView(pjk);
 });
 
-$(document).on("click", "#btn-view-create-project", function(){
-    create_project(pjk);
-});
+
 
 $(document).on("click", ".logo img", function(){
     projinks_website("/");
