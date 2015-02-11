@@ -9,7 +9,7 @@ body{
 	color : #262626;
 	font-size : .8em;
 
-
+	font-family: Helvetica Neue, Arial, sans-serif;
 }
 
 /** Global */
@@ -47,7 +47,6 @@ header#topbar ul li:first-child{
 	color: white;
 	padding: 1px 5px;
 	cursor: pointer;
-	font-family: arial;
 }
 .nav-live{
 	padding: 0px 6px 10px 6px;
@@ -73,13 +72,6 @@ header#topbar ul li:first-child{
 	/*color: #fff;*/
 	font-size: 20px;
 	/*padding: 10px;*/
-}
-
-.header_icons li span{
-	/*font-size: 14px;*/
-	/*color:#fff;*/
-	font-weight: 900;
-	font-family: Arial;
 }
 
 /** Layout */
