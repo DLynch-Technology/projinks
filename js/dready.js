@@ -7,6 +7,7 @@ $(document).on("click", "#pjk-action-pl", function(){
 $(document).on("click", "#pjk-action-cp", function(){
     $('#pname').val(pjk.nextGenericName());
     transition_view($('#view-create-project'));
+    set_tab_live('pjk-action-cp');
 });
 
 $(document).on('click', ".pjk-action-edit", function(){
@@ -50,7 +51,7 @@ $(document).on("click", "#btn-view-create-project", function(){
 
 
 
-$(document).on("click", ".open-project span.ptitle, .open-project span.expander", function(){
+$(document).on("click", ".open-project span.ptitle, .open-project a.expander", function(){
     var ele = $(this).parent();
     pjk.setActiveProjink(ele.attr('rel'));
     toggle_projink(ele);
