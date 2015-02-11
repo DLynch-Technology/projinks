@@ -3,7 +3,7 @@
   "name": "Projinks (Beta)",
   "short_name" : "Projinks",
   "description": "Stash your links in Projinks.  Stash, Retrieve, Organize...",
-  "version": "0.1.6",
+  "version": "0.1.5",
   "permissions":[
   	"tabs",
     "storage",
