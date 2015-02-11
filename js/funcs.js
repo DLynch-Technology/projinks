@@ -64,7 +64,7 @@ var show_plist = function(){
 
 var append_pj_link = function(pjk,i,j){
     var dis_url = pjk.projinks[i].links[j];
-    var dis_url_short = trunc_url(dis_url, 75);
+    var dis_url_short = trunc_url(dis_url, 60);
     links_holder = "";
     links_holder += "<li><span class='bigtext open-url-new-tab' rel='"+ dis_url +"'>";
     links_holder += dis_url_short;
