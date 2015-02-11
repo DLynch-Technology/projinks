@@ -9,7 +9,7 @@ body{
 	color : #262626;
 	font-size : .8em;
 
-	font-family: 'Open Sans', sans-serif;
+
 }
 
 /** Global */
@@ -190,17 +190,18 @@ header#topbar ul li:first-child{
 	margin-bottom: 10px;
 }
 
-.secondary-back{
-	color:#68228b;
-	font-weight: 900;
-}
+
 
 .secondary-back button{
-	background-color: #fff;
-	padding: 10px 25px;
-	color: #68228b;
-	font-size: 2em;
-	font-family: 'Noto Serif', serif;
+	background-color: #8B008B;
+	border-radius: 4px;
+	border: 0px;
+	padding: 10px;
+	color: #FFF;
+	font-size: 1.8em;
+	font-weight: 600;
+	cursor: pointer;
+/*	font-family: 'Noto Serif', serif;*/
 }
 
 .pad-text-bottom{
@@ -208,7 +209,9 @@ header#topbar ul li:first-child{
 }
 
 .help-text{
-	font-size: 1.1em;
+	font-size: 1.8em;
+	font-weight: 100;
+	margin-bottom: 40px;
 }
 .slim-width{
 	padding: 0px 30px;
@@ -216,22 +219,25 @@ header#topbar ul li:first-child{
 
 
 #cp-view{
+
 	text-align: center;
-	padding: 15px;
+	padding: 45px 15px 0px 15px;
 }
 .form-padded-view{
 	text-align: center;
-	padding: 15px;
+	padding: 30px 30px 0px 30px;
 }
-input[type=text], textarea{
-	background-color: #efebf1;
+input[type=text]{
+	/*background-color: #efebf1;*/
 	width: 500px;
 	padding: 15px 30px;
-	font-size: 1em;
+	font-size: 1.5em;
 	color: #68228b;
-	border: 1px solid #000;
 	margin-bottom: 25px;
-
+	border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 2px solid #D7D7D7;
 }
 textarea{
 

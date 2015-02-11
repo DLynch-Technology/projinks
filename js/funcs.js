@@ -211,7 +211,8 @@ var create_projink = function(){
         'name' : name,
         'description' : '',
     }
-    if ($('#pdescription').val() != '') obj.description = $('#pdescription').val();
+    // apply this back later
+    //if ($('#pdescription').val() != '') obj.description = $('#pdescription').val();
 
     var try_push = pjk.pushToCollection(obj);
     if (try_push){

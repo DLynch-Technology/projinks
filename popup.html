@@ -5,8 +5,6 @@
 		<link href="css/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="css/styles.css"/>
     	
-
-    	<link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
 	</head>
 	<body>
 		<section>
@@ -41,14 +39,14 @@
 						Projinks enables you to pack URLs into one shareable link called (you guessed it) Projinks.
 					</p>
 
-					<input type="text" name="pname" id="pname" placeholder="new projink name" />
+					<input type="text" name="pname" id="pname" placeholder="Give Your Projink A Name" />
 
 					<br />
+<!-- 
+					<textarea id="pdescription" placeholder="You can leave a description"></textarea>
+					<br /> -->
 
-					<textarea id="pdescription" placeholder="A description is always helpful."></textarea>
-					<br />
-
-					<button id="btn-view-create-project">Start</button>
+					<button id="btn-view-create-project">Create</button>
 				</div>
 			</div>
 			<div id="prolist" class="views">
@@ -59,7 +57,7 @@
 			<div id="view-project-edit" class="views fill-screen secondary-back">
 				<div class="form-padded-view">
 				<section>
-					<header>Projink Edit</header>
+<!-- 					<header>Projink Edit</header> -->
 
 					<form onsubmit="" id="save-projink-form">
 						<label>Name
@@ -78,10 +76,7 @@
 					</form>
 				</section>
 
-				<hr />
-
 				<section>
-					<header>Delete Projink</header>
 					<button id="delete-projink">Delete This Projink</button>
 				</section>
 				</div>
