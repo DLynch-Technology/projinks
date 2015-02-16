@@ -31,7 +31,7 @@ var show_plist = function(){
             ele.append(
                 "<li id='list-item"+ i +"'class='open-project pj-parent' rel='"+ i +"'>"+
                     "<a href='#' class='par-icons add-url' alt='Add link to Projink' title='Add link to Projink'><i class='fa fa-chain'></i></a>" +
-                    "<a href='#' class='pjk-action-edit par-icons' alt='Edit Projink' title='Edit Project'><i class='fa fa-cog'></i></a>" +
+                    "<a href='#' class='pjk-action-edit par-icons' alt='Edit Projink' title='Edit Project'><i class='fa fa-edit'></i></a>" +
                     "<a href='#' class='par-cursor expander par-icons'><i class='fa fa-folder'></i></a> " +
                     "<span class='par-cursor ptitle'>" + lt[i] + "</span>" +
                     "<ul style='display: none;' class='list-item-children'>" + links_holder + "</ul>" +
