@@ -3,6 +3,8 @@ var current_tab_url = function(){
     if ( chrome.tabs == undefined) return;
     chrome.tabs.query({ active: true, lastFocusedWindow: true }, function(tabs) {
         $('#live-url').val(tabs[0].url);
+        $('#live-title').val(tabs[0].title);
+
     });
 }
 

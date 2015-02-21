@@ -70,7 +70,8 @@ var append_pj_link = function(pjk,i,j){
     links_holder += dis_url_short;
     links_holder += "</span>";
     links_holder += "<input type='hidden' value='"+ dis_url +"' />";
-    links_holder += "<br /><br /><a href='#' class='open-url' rel='"+ dis_url +"' alt='Open in current tab' title='Open in current tab'><i class='fa fa-flash'></i></a> ";
+    links_holder += "<br /><br />";
+    // links_holder += "<a href='#' class='open-url' rel='"+ dis_url +"' alt='Open in current tab' title='Open in current tab'><i class='fa fa-flash'></i></a> ";
     links_holder += "<a href='#' class='open-url-new-tab' rel='"+ dis_url +"' alt='Open in new tab' title='Open in new tab'><i class='fa fa-external-link'></i></a> ";
     links_holder += "<a href='#' class='copy-url' rel='"+ dis_url +"' alt='Copy link to clipboard' title='Copy link to clipboard'><i class='fa fa-clipboard'></i></a> "; 
     links_holder += "<a href='#' class='remove-link' rel='"+ j +"' alt='remove link' title='remove link'><i class='fa fa-remove'></i></a>";
