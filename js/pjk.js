@@ -79,7 +79,10 @@ var PJK = function(){
     }
     this.addURL = function(){
         this.buildCurrentURL();
-        this.projinks[this.active_project_id].links.push(this.current_tab_url);
+        this.projinks[this.active_project_id].links.push({
+            'url' : this.current_tab_url,
+            'page_title' : this.current_tab_page_title,
+        });
         this.saveStorage();
     }
     this.buildCurrentURL = function(){
