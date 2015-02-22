@@ -66,12 +66,14 @@ var show_plist = function(){
 var append_pj_link = function(pjk,i,j){
 
     var test_var = pjk.projinks[i].links[j];
-    var dis_url = ''
+    var dis_url = '';
+    var actual_url = '';
     if (typeof(test_var) === 'object'){
         dis_url = test_var.page_title;
+        actual_url = test_var.url;
         // should base how to view this on global settings
     } else {
-        dis_url = test_var;
+        actual_url = dis_url = test_var;
     }
 
 
@@ -83,7 +85,7 @@ var append_pj_link = function(pjk,i,j){
     links_holder += "<input type='hidden' value='"+ dis_url +"' />";
     links_holder += "<br /><br />";
     // links_holder += "<a href='#' class='open-url' rel='"+ dis_url +"' alt='Open in current tab' title='Open in current tab'><i class='fa fa-flash'></i></a> ";
-    links_holder += "<a href='#' class='open-url-new-tab' rel='"+ dis_url +"' alt='Open in new tab' title='Open in new tab'><i class='fa fa-external-link'></i></a> ";
+    links_holder += "<a href='#' class='open-url-new-tab' rel='"+ actual_url +"' alt='Open in new tab' title='Open in new tab'><i class='fa fa-external-link'></i></a> ";
     links_holder += "<a href='#' class='copy-url' rel='"+ dis_url +"' alt='Copy link to clipboard' title='Copy link to clipboard'><i class='fa fa-clipboard'></i></a> "; 
     links_holder += "<a href='#' class='remove-link' rel='"+ j +"' alt='remove link' title='remove link'><i class='fa fa-remove'></i></a>";
     links_holder += "</li>";
