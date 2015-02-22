@@ -22,6 +22,10 @@ var transition_view = function(ele){
     ele.show();
 }
 var transition_to_plist = function(){
+    if( pjk.collection_count() < 1){
+        $('#pjk-action-cp').trigger("click");
+        return;
+    }
     show_plist();
     transition_view($('#prolist'));
 }
