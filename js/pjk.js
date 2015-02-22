@@ -4,6 +4,7 @@ var PJK = function(){
     this.projinks = [];
     this.error_message = "";
     this.current_tab_url = "";
+    this.current_tab_page_title = "";
     this.active_project_id = "";
     this.recent_projinks = [];
     this.live_projink = {};
@@ -83,6 +84,7 @@ var PJK = function(){
     }
     this.buildCurrentURL = function(){
         this.current_tab_url = $('#live-url').val();
+        this.current_tab_page_title = $('#live-title').val();
     }
     this.removeCollection = function(id_to_remove){
         this.collections.splice(id_to_remove,1);

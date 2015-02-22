@@ -5,7 +5,8 @@ $(document).on("click", "#pjk-action-pl", function(){
 });
 
 $(document).on("click", "#pjk-action-cp", function(){
-    $('#pname').val(pjk.nextGenericName());
+    //$('#pname').val(pjk.nextGenericName());
+    $('#pname').val('');
     transition_view($('#view-create-project'));
     set_tab_live('pjk-action-cp');
 });
