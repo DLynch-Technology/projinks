@@ -15,6 +15,7 @@ var set_tab_live = function(id){
 var show_plist = function(){
 
     if ( pjk.collection_count() > 0 ){
+        
         set_tab_live("pjk-action-pl");
 
         var lt = pjk.collections;
@@ -57,7 +58,7 @@ var show_plist = function(){
 
     } else {
 
-        $("#btn-view-create-project").trigger();
+        $("#pjk-action-cp").trigger();
     }
 
 }
@@ -115,10 +116,14 @@ var switch_expander = function(ele){
 
 }
 
-var load_splash = function(pjk){
+var load_splash = function(){
     setTimeout( function trigclick(){
         //should show active or plist if no active
-        $("#pjk-action-pl").trigger("click");
+        if ( pjk.collection_count() > 0 ){
+            $("#pjk-action-pl").trigger("click");
+        } else {
+            $("#pjk-action-cp").trigger("click");
+        }
     }, 100);
 }
 

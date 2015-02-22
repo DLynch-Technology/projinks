@@ -22,5 +22,5 @@ var pjk = new PJK();
 
 
 $(document).ready(function(){
-    load_splash(pjk);
+    load_splash();
 });
