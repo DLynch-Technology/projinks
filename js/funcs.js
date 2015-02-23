@@ -15,6 +15,7 @@ var set_tab_live = function(id){
 var show_plist = function(){
 
     if ( pjk.collection_count() > 0 ){
+        
         set_tab_live("pjk-action-pl");
 
         var lt = pjk.collections;
@@ -31,7 +32,7 @@ var show_plist = function(){
             ele.append(
                 "<li id='list-item"+ i +"'class='open-project pj-parent' rel='"+ i +"'>"+
                     "<a href='#' class='par-icons add-url' alt='Add link to Projink' title='Add link to Projink'><i class='fa fa-chain'></i></a>" +
-                    "<a href='#' class='pjk-action-edit par-icons' alt='Edit Projink' title='Edit Project'><i class='fa fa-cog'></i></a>" +
+                    "<a href='#' class='pjk-action-edit par-icons' alt='Edit Projink' title='Edit Project'><i class='fa fa-edit'></i></a>" +
                     "<a href='#' class='par-cursor expander par-icons'><i class='fa fa-folder'></i></a> " +
                     "<span class='par-cursor ptitle'>" + lt[i] + "</span>" +
                     "<ul style='display: none;' class='list-item-children'>" + links_holder + "</ul>" +
@@ -57,21 +58,34 @@ var show_plist = function(){
 
     } else {
 
-        $("#btn-view-create-project").trigger();
+        $("#pjk-action-cp").trigger();
     }
 
 }
 
 var append_pj_link = function(pjk,i,j){
-    var dis_url = pjk.projinks[i].links[j];
+
+    var test_var = pjk.projinks[i].links[j];
+    var dis_url = '';
+    var actual_url = '';
+    if (typeof(test_var) === 'object'){
+        dis_url = test_var.page_title;
+        actual_url = test_var.url;
+        // should base how to view this on global settings
+    } else {
+        actual_url = dis_url = test_var;
+    }
+
+
     var dis_url_short = trunc_url(dis_url, 60);
     links_holder = "";
     links_holder += "<li><span class='bigtext open-url-new-tab' rel='"+ dis_url +"'>";
     links_holder += dis_url_short;
     links_holder += "</span>";
     links_holder += "<input type='hidden' value='"+ dis_url +"' />";
-    links_holder += "<br /><br /><a href='#' class='open-url' rel='"+ dis_url +"' alt='Open in current tab' title='Open in current tab'><i class='fa fa-flash'></i></a> ";
-    links_holder += "<a href='#' class='open-url-new-tab' rel='"+ dis_url +"' alt='Open in new tab' title='Open in new tab'><i class='fa fa-external-link'></i></a> ";
+    links_holder += "<br /><br />";
+    // links_holder += "<a href='#' class='open-url' rel='"+ dis_url +"' alt='Open in current tab' title='Open in current tab'><i class='fa fa-flash'></i></a> ";
+    links_holder += "<a href='#' class='open-url-new-tab' rel='"+ actual_url +"' alt='Open in new tab' title='Open in new tab'><i class='fa fa-external-link'></i></a> ";
     links_holder += "<a href='#' class='copy-url' rel='"+ dis_url +"' alt='Copy link to clipboard' title='Copy link to clipboard'><i class='fa fa-clipboard'></i></a> "; 
     links_holder += "<a href='#' class='remove-link' rel='"+ j +"' alt='remove link' title='remove link'><i class='fa fa-remove'></i></a>";
     links_holder += "</li>";
@@ -114,10 +128,14 @@ var switch_expander = function(ele){
 
 }
 
-var load_splash = function(pjk){
+var load_splash = function(){
     setTimeout( function trigclick(){
         //should show active or plist if no active
-        $("#pjk-action-pl").trigger("click");
+        if ( pjk.collection_count() > 0 ){
+            $("#pjk-action-pl").trigger("click");
+        } else {
+            $("#pjk-action-cp").trigger("click");
+        }
     }, 100);
 }
 

@@ -2,8 +2,8 @@
   "manifest_version": 2,
   "name": "Projinks (Beta)",
   "short_name" : "Projinks",
-  "description": "Stash your links in Projinks.  Stash, Retrieve, Organize...",
-  "version": "0.1.5",
+  "description": "Stash, Retrieve & Organize links in collections called Projinks.",
+  "version": "0.1.6",
   "permissions":[
   	"tabs",
     "storage",
@@ -18,5 +18,6 @@
   "browser_action": {
     "default_icon": "images/pj_icon16.png",
     "default_popup": "popup.html"
-  }
+  },
+  "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'"
 }
