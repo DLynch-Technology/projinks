@@ -1,0 +1,1 @@
+zip -r projinks_v_0_1_6_1 * -x versions/*
